@@ -132,5 +132,51 @@
        </a>
   </p>
 </section>
+    ```html
+<section>
+  <h2>📊 Diagrama de Bloques del Sistema</h2>
+  <p>
+    El siguiente diagrama muestra el diseño del sistema con sensores de entrada, un microcontrolador de procesamiento y salidas hacia la aplicación móvil y el sistema de riego.
+  </p>
+  <img src="diagrama.png" alt="Diagrama de Bloques del Sistema" style="max-width:80%; border:1px solid #ccc; border-radius:8px; display:block; margin:auto;">
+</section>
+
+<section>
+  <h2>⚙️ Explicación del Diseño Técnico</h2>
+  <p>
+    El sistema de huerta escolar funciona de la siguiente manera:
+  </p>
+  <ul>
+    <li>Los <b>sensores</b> de humedad, temperatura y luz recogen datos en tiempo real.</li>
+    <li>El <b>ESP32</b> procesa esta información y decide si activar el riego automático.</li>
+    <li>Los datos se envían a la <b>aplicación móvil creada en App Inventor</b> mediante Bluetooth.</li>
+    <li>El usuario puede visualizar la información y controlar manualmente el sistema de riego desde la app.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>🔗 Justificación de Comunicación y Aplicación</h2>
+  <p>
+    <b>Comunicación seleccionada: Bluetooth</b><br>
+    Se eligió Bluetooth porque:
+  </p>
+  <ul>
+    <li>No requiere acceso a Internet, ideal para entornos escolares o rurales.</li>
+    <li>Es de bajo consumo energético y conexión rápida.</li>
+    <li>Permite transmisión directa entre el microcontrolador y el celular.</li>
+  </ul>
+
+  <p>
+    <b>Aplicación seleccionada: App Inventor</b><br>
+    Se eligió App Inventor porque:
+  </p>
+  <ul>
+    <li>Es sencilla y accesible para estudiantes.</li>
+    <li>Permite diseñar interfaces gráficas fácilmente.</li>
+    <li>Facilita la integración con módulos Bluetooth.</li>
+  </ul>
+</section>
+```
+
 </body>
 </html>

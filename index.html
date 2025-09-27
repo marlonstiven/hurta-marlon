@@ -50,6 +50,19 @@
       color: #2e7d32;
       margin-bottom: 15px;
     }
+    ul {
+      line-height: 1.8;
+    }
+    .roles {
+      display: flex;
+      justify-content: space-between;
+    }
+    .roles div {
+      width: 45%;
+      background: #e8f5e9;
+      padding: 10px;
+      border-radius: 8px;
+    }
     canvas {
       margin: 20px auto;
       display: block;
@@ -67,19 +80,97 @@
   </style>
 </head>
 <body>
+  <!-- 🔹 Encabezado -->
   <header>
     <h1>🌱 Huerta Escolar Automatizada</h1>
     <p>Proyecto académico - GitHub Pages</p>
   </header>
 
+  <!-- 🔹 Menú -->
   <nav>
     <a href="#integrantes">Integrantes</a>
+    <a href="#justificacion">Justificación</a>
     <a href="#sensores">Sensores</a>
     <a href="#app">App</a>
     <a href="#diagrama">Diagrama</a>
+    <a href="#explicacion">Explicación</a>
+    <a href="#comunicacion">Comunicación</a>
+    <a href="#hoja3">Hoja 3</a>
     <a href="#graficas">Gráficas</a>
   </nav>
 
+  <!-- 🔹 Secciones -->
+  <section id="integrantes">
+    <h2>👥 Integrantes y Roles</h2>
+    <div class="roles">
+      <div><strong>Líder Técnico:</strong> Marlon Marin</div>
+      <div><strong>Líder Documental:</strong> Marlon Marin</div>
+    </div>
+  </section>
+
+  <section id="justificacion">
+    <h2>🎯 Justificación</h2>
+    <p>
+      La <strong>huerta escolar automatizada</strong> busca fomentar la alimentación saludable y el aprendizaje práctico de tecnologías.  
+      Mediante sensores se podrá monitorear la humedad del suelo, la luz solar y la temperatura, garantizando mejores condiciones para el crecimiento de las plantas.
+    </p>
+  </section>
+
+  <section id="sensores">
+    <h2>🔧 Posibles Sensores</h2>
+    <ul>
+      <li><b>Humedad del suelo:</b> mide el nivel de humedad para saber cuándo regar.</li>
+      <li><b>DHT11/DHT22:</b> temperatura y humedad ambiental.</li>
+      <li><b>LDR o BH1750:</b> intensidad de luz solar.</li>
+    </ul>
+  </section>
+
+  <section id="app">
+    <h2>📲 App</h2>
+    <p>
+      👉 <a href="https://github.com/marlonstiven/hurta-marlon/raw/refs/heads/main/huertaApp.apk" download>Descargar APK</a><br>
+      👉 <a href="https://github.com/marlonstiven/hurta-marlon/raw/refs/heads/main/huertaApp%20(1).aia" download>Descargar AIA</a>
+    </p>
+  </section>
+
+  <section id="diagrama">
+    <h2>📊 Diagrama</h2>
+    <img src="diagrama.png" alt="Diagrama del sistema" style="max-width:80%; display:block; margin:auto;">
+  </section>
+
+  <section id="explicacion">
+    <h2>⚙️ Explicación Técnica</h2>
+    <ul>
+      <li>Los sensores recogen datos en tiempo real.</li>
+      <li>El <b>ESP32</b> procesa la información y activa el riego automático.</li>
+      <li>Los datos se envían a la <b>app</b> mediante Bluetooth.</li>
+      <li>El usuario puede visualizar y controlar el riego.</li>
+    </ul>
+  </section>
+
+  <section id="comunicacion">
+    <h2>🔗 Comunicación</h2>
+    <p><b>Bluetooth:</b> conexión rápida, sin Internet y bajo consumo.</p>
+    <p><b>App Inventor:</b> fácil de usar, con integración Bluetooth.</p>
+  </section>
+
+  <section id="hoja3">
+    <h2>📅 Hoja de Trabajo 3 – Semana 3</h2>
+    <h3>⚙️ Configuración inicial y pruebas</h3>
+    <h4>📸 Evidencia</h4>
+    <img src="conexion.png" alt="Conexión en protoboard" style="max-width:80%; display:block; margin:auto;">
+    <h4>📊 Lecturas</h4>
+    <img src="lecturas.png" alt="Lecturas en monitor serial" style="max-width:80%; display:block; margin:auto;">
+    <table border="1" style="margin:20px auto; width:80%; text-align:center; border-collapse:collapse;">
+      <tr style="background:#e8f5e9; font-weight:bold;">
+        <td>Fecha</td><td>Sensor</td><td>Lectura</td><td>Observaciones</td>
+      </tr>
+      <tr><td>17/09/2025</td><td>Humedad suelo</td><td>650</td><td>Tierra húmeda</td></tr>
+      <tr><td>17/09/2025</td><td>Humedad suelo</td><td>300</td><td>Tierra seca</td></tr>
+    </table>
+  </section>
+
+  <!-- 🔹 Gráficas -->
   <section id="graficas">
     <h2>📈 Gráficas de Lecturas en Tiempo Real</h2>
     <canvas id="graficoHumedad"></canvas>
@@ -87,109 +178,25 @@
     <canvas id="graficoLuz"></canvas>
   </section>
 
+  <!-- 🔹 Footer -->
   <footer>
     🌍 Proyecto académico - Huerta Automatizada | GitHub Pages | 2025
   </footer>
 
   <script>
-    // Función para obtener hora actual (ej: "10:25")
+    // Función hora
     function getHora() {
       const ahora = new Date();
       return ahora.getHours() + ":" + String(ahora.getMinutes()).padStart(2, "0");
     }
 
-    // --- Humedad del Suelo ---
-    const ctx1 = document.getElementById('graficoHumedad').getContext('2d');
-    const graficoHumedad = new Chart(ctx1, {
+    // --- Gráfico Humedad del Suelo ---
+    const graficoHumedad = new Chart(document.getElementById('graficoHumedad'), {
       type: 'line',
       data: {
         labels: [getHora()],
         datasets: [{
           label: 'Humedad del Suelo',
-          data: [Math.floor(Math.random() * 300 + 400)], // valor inicial random
+          data: [Math.floor(Math.random() * 300 + 400)],
           borderColor: '#2e7d32',
           backgroundColor: 'rgba(46,125,50,0.2)',
-          fill: true,
-          tension: 0.3
-        }]
-      }
-    });
-
-    // --- Temperatura y Humedad Ambiental ---
-    const ctx2 = document.getElementById('graficoTempHum').getContext('2d');
-    const graficoTempHum = new Chart(ctx2, {
-      type: 'line',
-      data: {
-        labels: [getHora()],
-        datasets: [
-          {
-            label: 'Temperatura (°C)',
-            data: [Math.floor(Math.random() * 5 + 20)],
-            borderColor: '#e53935',
-            backgroundColor: 'rgba(229,57,53,0.2)',
-            fill: true,
-            tension: 0.3
-          },
-          {
-            label: 'Humedad (%)',
-            data: [Math.floor(Math.random() * 10 + 50)],
-            borderColor: '#1e88e5',
-            backgroundColor: 'rgba(30,136,229,0.2)',
-            fill: true,
-            tension: 0.3
-          }
-        ]
-      }
-    });
-
-    // --- Luz Solar ---
-    const ctx3 = document.getElementById('graficoLuz').getContext('2d');
-    const graficoLuz = new Chart(ctx3, {
-      type: 'bar',
-      data: {
-        labels: [getHora()],
-        datasets: [{
-          label: 'Intensidad de Luz (lux)',
-          data: [Math.floor(Math.random() * 1000 + 200)],
-          backgroundColor: 'rgba(255, 215, 0, 0.7)',
-          borderColor: '#fbc02d'
-        }]
-      }
-    });
-
-    // --- Actualización automática cada 5s ---
-    setInterval(() => {
-      const hora = getHora();
-
-      // Limitar a 8 puntos en pantalla
-      if (graficoHumedad.data.labels.length > 8) {
-        graficoHumedad.data.labels.shift();
-        graficoHumedad.data.datasets[0].data.shift();
-
-        graficoTempHum.data.labels.shift();
-        graficoTempHum.data.datasets[0].data.shift();
-        graficoTempHum.data.datasets[1].data.shift();
-
-        graficoLuz.data.labels.shift();
-        graficoLuz.data.datasets[0].data.shift();
-      }
-
-      // Agregar nuevo dato
-      graficoHumedad.data.labels.push(hora);
-      graficoHumedad.data.datasets[0].data.push(Math.floor(Math.random() * 300 + 400));
-
-      graficoTempHum.data.labels.push(hora);
-      graficoTempHum.data.datasets[0].data.push(Math.floor(Math.random() * 5 + 20)); // temp
-      graficoTempHum.data.datasets[1].data.push(Math.floor(Math.random() * 10 + 50)); // humedad
-
-      graficoLuz.data.labels.push(hora);
-      graficoLuz.data.datasets[0].data.push(Math.floor(Math.random() * 1000 + 200));
-
-      // Refrescar gráficas
-      graficoHumedad.update();
-      graficoTempHum.update();
-      graficoLuz.update();
-    }, 5000);
-  </script>
-</body>
-</html>

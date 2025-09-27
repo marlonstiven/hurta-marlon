@@ -2,167 +2,106 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Huerta Escolar</title>
+  <title>Huerta Escolar - Mejoras</title>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f1f5f9;
-    }
-    header {
-      background-color: #1b5e20;
-      color: white;
-      padding: 15px;
-      text-align: center;
-    }
-    nav {
-      background-color: #2e7d32;
-      padding: 10px;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    section {
-      background: white;
-      margin: 20px auto;
-      padding: 20px;
-      border-radius: 10px;
-      width: 80%;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin: 20px;
     }
     h2 {
-      color: #1b5e20;
+      color: #146214;
     }
-    footer {
-      text-align: center;
-      padding: 15px;
-      background-color: #1b5e20;
-      color: white;
+    #alerta {
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 15px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
       margin-top: 20px;
     }
-  </style>
-  <!-- Librería de Google Charts -->
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript">
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawCharts);
-
-    function drawCharts() {
-      // Humedad del suelo
-      var data1 = google.visualization.arrayToDataTable([
-        ['Hora', 'Humedad del Suelo'],
-        ['18:04', 550],
-        ['18:04', 480],
-        ['18:04', 600],
-        ['18:05', 650],
-        ['18:05', 620]
-      ]);
-      var options1 = {
-        title: 'Humedad del Suelo',
-        legend: { position: 'top' },
-        colors: ['green'],
-        areaOpacity: 0.3
-      };
-      var chart1 = new google.visualization.AreaChart(document.getElementById('soilChart'));
-      chart1.draw(data1, options1);
-
-      // Temperatura y Humedad
-      var data2 = google.visualization.arrayToDataTable([
-        ['Hora', 'Temperatura (°C)', 'Humedad (%)'],
-        ['18:04', 20, 55],
-        ['18:04', 21, 52],
-        ['18:04', 22, 50],
-        ['18:04', 23, 60],
-        ['18:05', 24, 58]
-      ]);
-      var options2 = {
-        title: 'Temperatura y Humedad',
-        legend: { position: 'top' },
-        colors: ['red', 'blue'],
-        areaOpacity: 0.2
-      };
-      var chart2 = new google.visualization.AreaChart(document.getElementById('tempHumChart'));
-      chart2.draw(data2, options2);
-
-      // Intensidad de luz
-      var data3 = google.visualization.arrayToDataTable([
-        ['Hora', 'Intensidad de Luz (lux)'],
-        ['18:04', 700],
-        ['18:04', 800],
-        ['18:04', 200],
-        ['18:05', 1000],
-        ['18:05', 300]
-      ]);
-      var options3 = {
-        title: 'Intensidad de Luz',
-        legend: { position: 'top' },
-        colors: ['#fbc02d']
-      };
-      var chart3 = new google.visualization.ColumnChart(document.getElementById('lightChart'));
-      chart3.draw(data3, options3);
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
     }
-  </script>
+    th {
+      background-color: #e8f5e9;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>🌱 Proyecto Huerta Escolar Inteligente</h1>
-  </header>
+  <h2>🌱 Gráficas y Alertas en Tiempo Real</h2>
 
-  <nav>
-    <a href="#integrantes">Integrantes</a>
-    <a href="#sensores">Sensores</a>
-    <a href="#app">App</a>
-    <a href="#diagrama">Diagrama</a>
-    <a href="#graficas">Gráficas</a>
-  </nav>
+  <!-- Contenedor de la gráfica -->
+  <div id="graficaHumedad" style="width: 100%; height: 400px;"></div>
 
-  <section id="integrantes">
-    <h2>👥 Integrantes</h2>
-    <ul>
-      <li>Nombre 1</li>
-      <li>Nombre 2</li>
-      <li>Nombre 3</li>
-    </ul>
-  </section>
+  <!-- Alerta -->
+  <div id="alerta"></div>
 
-  <section id="sensores">
-    <h2>🔧 Sensores</h2>
-    <p>El sistema utiliza sensores de humedad del suelo, temperatura, humedad ambiental y luz para monitorear las condiciones de la huerta escolar.</p>
-  </section>
+  <!-- Tabla de registros -->
+  <h3>📋 Registros de Datos</h3>
+  <table id="tablaRegistros">
+    <thead>
+      <tr>
+        <th>Hora</th>
+        <th>Humedad del Suelo</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
 
-  <section id="app">
-    <h2>📱 Aplicación</h2>
-    <p>La aplicación móvil/web muestra en tiempo real los datos de los sensores y permite configurar alertas para mantener la huerta en condiciones óptimas.</p>
-  </section>
+  <script>
+    google.charts.load('current', {packages:['corechart']});
+    google.charts.setOnLoadCallback(dibujarGrafica);
 
-  <section id="diagrama">
-    <h2>📊 Diagrama</h2>
-    <p>Aquí se muestra el diagrama de bloques del sistema:</p>
-    <img src="conexion.png" alt="Diagrama de Conexión" width="400">
-    <img src="lecturas.png" alt="Diagrama de Lecturas" width="400">
-  </section>
+    let datos = [
+      ['Hora', 'Humedad del Suelo'],
+      ['18:04', 550],
+      ['18:05', 380],
+      ['18:06', 620],
+      ['18:07', 450],
+      ['18:08', 700]
+    ];
 
-  <section id="graficas">
-    <h2>📈 Gráficas de Lecturas en Tiempo Real</h2>
-    <div id="soilChart" style="width: 100%; height: 300px;"></div>
-    <div id="tempHumChart" style="width: 100%; height: 300px;"></div>
-    <div id="lightChart" style="width: 100%; height: 300px;"></div>
-  </section>
+    function dibujarGrafica() {
+      let data = google.visualization.arrayToDataTable(datos);
+      let options = {
+        title: 'Humedad del Suelo',
+        curveType: 'function',
+        legend: { position: 'bottom' },
+        colors: ['#2e7d32'],
+        areaOpacity: 0.2
+      };
 
-  <footer>
-    <p>Huerta Escolar Inteligente © 2025</p>
-  </footer>
+      let chart = new google.visualization.AreaChart(document.getElementById('graficaHumedad'));
+      chart.draw(data, options);
+
+      // Verificar alerta
+      let ultimaLectura = datos[datos.length - 1][1];
+      let alerta = document.getElementById("alerta");
+      if (ultimaLectura < 400) {
+        alerta.innerHTML = "⚠️ ¡Alerta! La humedad del suelo está muy baja (" + ultimaLectura + ")";
+        alerta.style.color = "red";
+      } else {
+        alerta.innerHTML = "✅ Humedad del suelo en nivel adecuado (" + ultimaLectura + ")";
+        alerta.style.color = "green";
+      }
+
+      // Llenar tabla con los registros
+      let tabla = document.querySelector("#tablaRegistros tbody");
+      tabla.innerHTML = "";
+      for (let i = 1; i < datos.length; i++) {
+        let fila = "<tr><td>" + datos[i][0] + "</td><td>" + datos[i][1] + "</td></tr>";
+        tabla.innerHTML += fila;
+      }
+    }
+  </script>
 </body>
 </html>
+
 
   </script>
 </body>

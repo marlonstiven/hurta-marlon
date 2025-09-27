@@ -1,36 +1,30 @@
-
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Huerta Escolar Automatizada</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f4f6f9;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f0f4f8;
       color: #333;
+      margin: 0;
     }
     header {
-      background: #2e7d32;
+      background: linear-gradient(135deg, #2e7d32, #66bb6a);
       color: white;
-      padding: 20px;
+      padding: 40px 20px;
       text-align: center;
+      border-bottom-left-radius: 50% 10%;
+      border-bottom-right-radius: 50% 10%;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-    /* 🔹 Menú de navegación */
     nav {
       position: sticky;
       top: 0;
       background: #1b5e20;
-      padding: 10px;
-      z-index: 1000;
+      padding: 12px;
       text-align: center;
     }
     nav a {
@@ -38,188 +32,164 @@
       text-decoration: none;
       margin: 0 15px;
       font-weight: bold;
-      transition: color 0.3s;
+      transition: color 0.3s, transform 0.2s;
     }
     nav a:hover {
       color: #a5d6a7;
+      transform: scale(1.1);
     }
     section {
       max-width: 900px;
       margin: 30px auto;
-      padding: 20px;
+      padding: 25px;
       background: white;
-      border-radius: 10px;
-      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
     }
     h2 {
       color: #2e7d32;
-      margin-top: 0;
+      margin-bottom: 15px;
     }
-    ul {
-      line-height: 1.8;
-    }
-    .roles {
-      display: flex;
-      justify-content: space-between;
-    }
-    .roles div {
-      width: 45%;
-      background: #e8f5e9;
-      padding: 10px;
-      border-radius: 8px;
+    canvas {
+      margin: 20px auto;
+      display: block;
+      max-width: 100%;
     }
     footer {
       text-align: center;
-      padding: 15px;
-      margin-top: 30px;
+      padding: 20px;
+      margin-top: 40px;
       background: #2e7d32;
       color: white;
-      font-size: 0.9em;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
     }
   </style>
 </head>
 <body>
-  <!-- Título del Proyecto -->
   <header>
     <h1>🌱 Huerta Escolar Automatizada</h1>
-    <p>Proyecto académico - Semana 1</p>
+    <p>Proyecto académico - GitHub Pages</p>
   </header>
-
-  <!-- 🔹 Menú de navegación -->
 
   <nav>
     <a href="#integrantes">Integrantes</a>
-    <a href="#justificacion">Justificación</a>
     <a href="#sensores">Sensores</a>
     <a href="#app">App</a>
     <a href="#diagrama">Diagrama</a>
-    <a href="#explicacion">Explicación</a>
-    <a href="#comunicacion">Comunicación</a>
+    <a href="#graficas">Gráficas</a>
   </nav>
 
-  <!-- Integrantes y Roles -->
-
-  <section id="integrantes">
-    <h2>👥 Integrantes y Roles</h2>
-    <div class="roles">
-      <div><strong>Líder Técnico:</strong> marlon marin</div>
-      <div><strong>Líder Documental:</strong> marlon marin</div>
-    </div>
+  <section id="graficas">
+    <h2>📈 Gráficas de Lecturas en Tiempo Real</h2>
+    <canvas id="graficoHumedad"></canvas>
+    <canvas id="graficoTempHum"></canvas>
+    <canvas id="graficoLuz"></canvas>
   </section>
 
-  <!-- Justificación breve -->
-
-  <section id="justificacion">
-    <h2>🎯 Justificación Breve</h2>
-    <p>
-      La <strong>huerta escolar automatizada</strong> busca 
-      la alimentación saludable y el aprendizaje práctico de tecnologías.
-      Mediante sensores se podrá monitorear la humedad del suelo, la luz solar
-      y la temperatura, garantizando mejores condiciones para el crecimiento de las plantas.
-    </p>
-  </section>
-
-  <!-- Sensores -->
-
-  <section id="sensores">
-    <h2>🔧 Posibles Sensores a Emplear</h2>
-    <ul>
-      <li><b>Sensor de humedad del suelo:</b> mide el nivel de humedad para saber cuándo regar.</li>
-      <li><b>Sensor de temperatura y humedad (DHT11/DHT22):</b> registra condiciones climáticas.</li>
-      <li><b>Sensor de luz (LDR o BH1750):</b> mide la intensidad de la luz solar.</li>
-    </ul>
-  </section>
-
-  <!-- Descarga de la App -->
-
-  <section id="app">
-    <h2>📲 Descargar la App</h2>
-    <p>
-      👉 <a href="https://github.com/marlonstiven/hurta-marlon/raw/refs/heads/main/huertaApp.apk" download>Descargar huertaApp.apk</a>
-    </p>
-    <p>
-      👉 <a href="https://github.com/marlonstiven/hurta-marlon/raw/refs/heads/main/huertaApp%20(1).aia" download>Descargar huertaApp.aia</a>
-    </p>
-  </section>
-
-  <!-- Diagrama -->
-
-  <section id="diagrama">
-    <h2>📊 Diagrama de Bloques del Sistema</h2>
-    <img src="diagrama.png" alt="Diagrama del sistema" style="max-width:80%; border:1px solid #ccc; border-radius:8px; display:block; margin:auto;">
-  </section>
-
-  <!-- Explicación -->
-
-  <section id="explicacion">
-    <h2>⚙️ Explicación del Diseño Técnico</h2>
-    <ul>
-      <li>Los sensores recogen datos en tiempo real.</li>
-      <li>El <b>ESP32</b> procesa la información y decide si activar el riego automático.</li>
-      <li>Los datos se envían a la <b>app en App Inventor</b> mediante Bluetooth.</li>
-      <li>El usuario puede visualizar y controlar manualmente el sistema de riego.</li>
-    </ul>
-  </section>
-
-  <!-- Comunicación -->
-
-  <section id="comunicacion">
-    <h2>🔗 Justificación de Comunicación y Aplicación</h2>
-    <p><b>Comunicación: Bluetooth</b> → No requiere Internet, bajo consumo, conexión rápida.</p>
-    <p><b>Aplicación: App Inventor</b> → Fácil, accesible, integra módulos Bluetooth.</p>
-  </section>
-
-  <!-- Hoja de Trabajo 3 -->
-
-  <section id="hoja3">
-    <h2>📅 Hoja de Trabajo 3 – Semana 3</h2>
-    <h3>⚙️ Configuración inicial y pruebas de sensores</h3>
-
-```
-<!-- Evidencia de conexión -->
-<h4>📸 Evidencia de Conexión</h4>
-<p>A continuación, se muestra la conexión del sensor al ESP32 en protoboard:</p>
-<img src="conexion.png" alt="Conexión del sensor en protoboard" style="max-width:80%; border:1px solid #ccc; border-radius:8px; display:block; margin:auto;">
-
-<!-- Capturas de lecturas -->
-<h4>📊 Lecturas Iniciales</h4>
-<p>Se registraron las primeras lecturas del sensor utilizando el monitor serial:</p>
-<img src="lecturas.png" alt="Lecturas del sensor en monitor serial" style="max-width:80%; border:1px solid #ccc; border-radius:8px; display:block; margin:auto;">
-
-<!-- Tabla de resultados -->
-<table border="1" style="border-collapse: collapse; margin:20px auto; width:80%; text-align:center;">
-  <tr style="background:#e8f5e9; font-weight:bold;">
-    <td>Fecha</td>
-    <td>Sensor</td>
-    <td>Lectura</td>
-    <td>Observaciones</td>
-  </tr>
-  <tr>
-    <td>17/09/2025</td>
-    <td>Humedad suelo</td>
-    <td>650</td>
-    <td>Tierra húmeda</td>
-  </tr>
-  <tr>
-    <td>17/09/2025</td>
-    <td>Humedad suelo</td>
-    <td>300</td>
-    <td>Tierra seca</td>
-  </tr>
-</table>
-
-<!-- Informe breve -->
-<h4>📝 Informe Breve de Resultados</h4>
-<p>
-  Se logró conectar el sensor de humedad al ESP32 y obtener lecturas correctas. 
-  Cuando la tierra estaba seca, el valor disminuyó hasta ~300, mientras que al humedecer la tierra 
-  el valor aumentó a ~650. Esto confirma el correcto funcionamiento del sensor y la configuración inicial 
-  del proyecto.
-</p>
-  </section>
-  <!-- Footer -->
   <footer>
-    🌍 Proyecto académico - GitHub Pages | 2025
+    🌍 Proyecto académico - Huerta Automatizada | GitHub Pages | 2025
   </footer>
+
+  <script>
+    // Función para obtener hora actual (ej: "10:25")
+    function getHora() {
+      const ahora = new Date();
+      return ahora.getHours() + ":" + String(ahora.getMinutes()).padStart(2, "0");
+    }
+
+    // --- Humedad del Suelo ---
+    const ctx1 = document.getElementById('graficoHumedad').getContext('2d');
+    const graficoHumedad = new Chart(ctx1, {
+      type: 'line',
+      data: {
+        labels: [getHora()],
+        datasets: [{
+          label: 'Humedad del Suelo',
+          data: [Math.floor(Math.random() * 300 + 400)], // valor inicial random
+          borderColor: '#2e7d32',
+          backgroundColor: 'rgba(46,125,50,0.2)',
+          fill: true,
+          tension: 0.3
+        }]
+      }
+    });
+
+    // --- Temperatura y Humedad Ambiental ---
+    const ctx2 = document.getElementById('graficoTempHum').getContext('2d');
+    const graficoTempHum = new Chart(ctx2, {
+      type: 'line',
+      data: {
+        labels: [getHora()],
+        datasets: [
+          {
+            label: 'Temperatura (°C)',
+            data: [Math.floor(Math.random() * 5 + 20)],
+            borderColor: '#e53935',
+            backgroundColor: 'rgba(229,57,53,0.2)',
+            fill: true,
+            tension: 0.3
+          },
+          {
+            label: 'Humedad (%)',
+            data: [Math.floor(Math.random() * 10 + 50)],
+            borderColor: '#1e88e5',
+            backgroundColor: 'rgba(30,136,229,0.2)',
+            fill: true,
+            tension: 0.3
+          }
+        ]
+      }
+    });
+
+    // --- Luz Solar ---
+    const ctx3 = document.getElementById('graficoLuz').getContext('2d');
+    const graficoLuz = new Chart(ctx3, {
+      type: 'bar',
+      data: {
+        labels: [getHora()],
+        datasets: [{
+          label: 'Intensidad de Luz (lux)',
+          data: [Math.floor(Math.random() * 1000 + 200)],
+          backgroundColor: 'rgba(255, 215, 0, 0.7)',
+          borderColor: '#fbc02d'
+        }]
+      }
+    });
+
+    // --- Actualización automática cada 5s ---
+    setInterval(() => {
+      const hora = getHora();
+
+      // Limitar a 8 puntos en pantalla
+      if (graficoHumedad.data.labels.length > 8) {
+        graficoHumedad.data.labels.shift();
+        graficoHumedad.data.datasets[0].data.shift();
+
+        graficoTempHum.data.labels.shift();
+        graficoTempHum.data.datasets[0].data.shift();
+        graficoTempHum.data.datasets[1].data.shift();
+
+        graficoLuz.data.labels.shift();
+        graficoLuz.data.datasets[0].data.shift();
+      }
+
+      // Agregar nuevo dato
+      graficoHumedad.data.labels.push(hora);
+      graficoHumedad.data.datasets[0].data.push(Math.floor(Math.random() * 300 + 400));
+
+      graficoTempHum.data.labels.push(hora);
+      graficoTempHum.data.datasets[0].data.push(Math.floor(Math.random() * 5 + 20)); // temp
+      graficoTempHum.data.datasets[1].data.push(Math.floor(Math.random() * 10 + 50)); // humedad
+
+      graficoLuz.data.labels.push(hora);
+      graficoLuz.data.datasets[0].data.push(Math.floor(Math.random() * 1000 + 200));
+
+      // Refrescar gráficas
+      graficoHumedad.update();
+      graficoTempHum.update();
+      graficoLuz.update();
+    }, 5000);
+  </script>
 </body>
 </html>

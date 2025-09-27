@@ -2,57 +2,187 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Huerta Escolar - Mejoras</title>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Huerta Escolar Automatizada</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 20px;
+      margin: 0;
+      padding: 0;
+      background: #f4f6f9;
+      color: #333;
+    }
+    header {
+      background: #2e7d32;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      background: #1b5e20;
+      padding: 10px;
+      z-index: 1000;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #a5d6a7;
+    }
+    section {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
     }
     h2 {
-      color: #146214;
+      color: #2e7d32;
+      margin-top: 0;
     }
-    #alerta {
-      font-weight: bold;
-      font-size: 18px;
-      margin-top: 15px;
+    ul {
+      line-height: 1.8;
+    }
+    .roles {
+      display: flex;
+      justify-content: space-between;
+    }
+    .roles div {
+      width: 45%;
+      background: #e8f5e9;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+      background: #2e7d32;
+      color: white;
+      font-size: 0.9em;
     }
     table {
       border-collapse: collapse;
-      width: 100%;
-      margin-top: 20px;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 8px;
+      margin: 20px auto;
+      width: 80%;
       text-align: center;
     }
+    table, th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
     th {
-      background-color: #e8f5e9;
+      background: #e8f5e9;
     }
   </style>
 </head>
 <body>
-  <h2>🌱 Gráficas y Alertas en Tiempo Real</h2>
+  <header>
+    <h1>🌱 Huerta Escolar Automatizada</h1>
+    <p>Proyecto académico</p>
+  </header>
 
-  <!-- Contenedor de la gráfica -->
-  <div id="graficaHumedad" style="width: 100%; height: 400px;"></div>
+  <nav>
+    <a href="#integrantes">Integrantes</a>
+    <a href="#justificacion">Justificación</a>
+    <a href="#sensores">Sensores</a>
+    <a href="#app">App</a>
+    <a href="#diagrama">Diagrama</a>
+    <a href="#explicacion">Explicación</a>
+    <a href="#comunicacion">Comunicación</a>
+    <a href="#graficas">Gráficas</a>
+  </nav>
 
-  <!-- Alerta -->
-  <div id="alerta"></div>
+  <section id="integrantes">
+    <h2>👥 Integrantes y Roles</h2>
+    <div class="roles">
+      <div><strong>Líder Técnico:</strong> Marlon Marin</div>
+      <div><strong>Líder Documental:</strong> Marlon Marin</div>
+    </div>
+  </section>
 
-  <!-- Tabla de registros -->
-  <h3>📋 Registros de Datos</h3>
-  <table id="tablaRegistros">
-    <thead>
-      <tr>
-        <th>Hora</th>
-        <th>Humedad del Suelo</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+  <section id="justificacion">
+    <h2>🎯 Justificación Breve</h2>
+    <p>
+      La <strong>huerta escolar automatizada</strong> busca la alimentación saludable y el aprendizaje práctico de tecnologías.
+      Mediante sensores se podrá monitorear la humedad del suelo, la luz solar y la temperatura, garantizando mejores condiciones para el crecimiento de las plantas.
+    </p>
+  </section>
 
+  <section id="sensores">
+    <h2>🔧 Posibles Sensores a Emplear</h2>
+    <ul>
+      <li><b>Sensor de humedad del suelo:</b> mide el nivel de humedad para saber cuándo regar.</li>
+      <li><b>Sensor de temperatura y humedad (DHT11/DHT22):</b> registra condiciones climáticas.</li>
+      <li><b>Sensor de luz (LDR o BH1750):</b> mide la intensidad de la luz solar.</li>
+    </ul>
+  </section>
+
+  <section id="app">
+    <h2>📲 Descargar la App</h2>
+    <p>
+      👉 <a href="https://github.com/marlonstiven/hurta-marlon/raw/refs/heads/main/huertaApp.apk" download>Descargar huertaApp.apk</a>
+    </p>
+    <p>
+      👉 <a href="https://github.com/marlonstiven/hurta-marlon/raw/refs/heads/main/huertaApp%20(1).aia" download>Descargar huertaApp.aia</a>
+    </p>
+  </section>
+
+  <section id="diagrama">
+    <h2>📊 Diagrama de Bloques del Sistema</h2>
+    <img src="diagrama.png" alt="Diagrama del sistema" style="max-width:80%; border:1px solid #ccc; border-radius:8px; display:block; margin:auto;">
+  </section>
+
+  <section id="explicacion">
+    <h2>⚙️ Explicación del Diseño Técnico</h2>
+    <ul>
+      <li>Los sensores recogen datos en tiempo real.</li>
+      <li>El <b>ESP32</b> procesa la información y decide si activar el riego automático.</li>
+      <li>Los datos se envían a la <b>app en App Inventor</b> mediante Bluetooth.</li>
+      <li>El usuario puede visualizar y controlar manualmente el sistema de riego.</li>
+    </ul>
+  </section>
+
+  <section id="comunicacion">
+    <h2>🔗 Justificación de Comunicación y Aplicación</h2>
+    <p><b>Comunicación: Bluetooth</b> → No requiere Internet, bajo consumo, conexión rápida.</p>
+    <p><b>Aplicación: App Inventor</b> → Fácil, accesible, integra módulos Bluetooth.</p>
+  </section>
+
+  <section id="graficas">
+    <h2>📈 Gráficas y Alertas en Tiempo Real</h2>
+    <div id="graficaHumedad" style="width: 100%; height: 400px;"></div>
+    <div id="alerta"></div>
+    <h3>📋 Registros de Datos</h3>
+    <table id="tablaRegistros">
+      <thead>
+        <tr>
+          <th>Hora</th>
+          <th>Humedad del Suelo</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <footer>
+    🌍 Proyecto académico - GitHub Pages | 2025
+  </footer>
+
+  <!-- Google Charts -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script>
     google.charts.load('current', {packages:['corechart']});
     google.charts.setOnLoadCallback(dibujarGrafica);
@@ -79,7 +209,7 @@
       let chart = new google.visualization.AreaChart(document.getElementById('graficaHumedad'));
       chart.draw(data, options);
 
-      // Verificar alerta
+      // Alerta
       let ultimaLectura = datos[datos.length - 1][1];
       let alerta = document.getElementById("alerta");
       if (ultimaLectura < 400) {
@@ -90,7 +220,7 @@
         alerta.style.color = "green";
       }
 
-      // Llenar tabla con los registros
+      // Tabla de registros
       let tabla = document.querySelector("#tablaRegistros tbody");
       tabla.innerHTML = "";
       for (let i = 1; i < datos.length; i++) {

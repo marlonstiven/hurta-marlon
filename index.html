@@ -226,13 +226,134 @@
       for (let i = 1; i < datos.length; i++) {
         let fila = "<tr><td>" + datos[i][0] + "</td><td>" + datos[i][1] + "</td></tr>";
         tabla.innerHTML += fila;
-      }
+  <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Huerta Inteligente - Gráficas y Alertas</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9fff5;
+      margin: 20px;
     }
-  </script>
-</body>
-</html>
+    h2 {
+      color: #2e7d32;
+    }
+    #alerta {
+      font-weight: bold;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      display: inline-block;
+    }
+    #alerta.ok {
+      background: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #2e7d32;
+    }
+    #alerta.warn {
+      background: #ffebee;
+      color: #c62828;
+      border: 1px solid #c62828;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    table, th, td {
+      border: 1px solid #c8e6c9;
+    }
+    th {
+      background: #a5d6a7;
+      color: #1b5e20;
+      padding: 8px;
+    }
+    td {
+      padding: 6px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h2>🌱 Gráficas y Alertas en Tiempo Real</h2>
+  <canvas id="grafica" width="600" height="300"></canvas>
+  <div id="alerta" class="ok">✔ Humedad del suelo en nivel adecuado</div>
 
+  <h3>📋 Registros de Datos</h3>
+  <table id="tabla">
+    <thead>
+      <tr>
+        <th>Hora</th>
+        <th>Humedad del Suelo</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
 
+  <script>
+    // Configuración de la gráfica
+    const ctx = document.getElementById('grafica').getContext('2d');
+    const grafica = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [],
+        datasets: [{
+          label: 'Humedad del Suelo',
+          data: [],
+          borderColor: 'green',
+          backgroundColor: 'rgba(76, 175, 80, 0.2)',
+          borderWidth: 2,
+          fill: true,
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            min: 300,
+            max: 800
+          }
+        }
+      }
+    });
+
+    // Función para generar datos simulados
+    function obtenerDato() {
+      return Math.floor(Math.random() * (800 - 300) + 300); // entre 300 y 800
+    }
+
+    // Agregar datos cada 5 segundos
+    setInterval(() => {
+      const hora = new Date().toLocaleTimeString().slice(0, 5);
+      const humedad = obtenerDato();
+
+      // Agregar a la gráfica
+      grafica.data.labels.push(hora);
+      grafica.data.datasets[0].data.push(humedad);
+      grafica.update();
+
+      // Agregar a la tabla
+      const fila = document.createElement("tr");
+      fila.innerHTML = `<td>${hora}</td><td>${humedad}</td>`;
+      document.querySelector("#tabla tbody").appendChild(fila);
+
+      // Mostrar alerta
+      const alerta = document.getElementById("alerta");
+      if (humedad < 400) {
+        alerta.textContent = "⚠ Humedad baja, necesita riego";
+        alerta.className = "warn";
+      } else if (humedad > 700) {
+        alerta.textContent = "⚠ Humedad alta, evitar exceso de agua";
+        alerta.className = "warn";
+      } else {
+        alerta.textContent = "✔ Humedad del suelo en nivel adecuado";
+        alerta.className = "ok";
+      }
+    }, 5000);
   </script>
 </body>
 </html>

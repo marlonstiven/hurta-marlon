@@ -3,287 +3,167 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Huerta Escolar Automatizada</title>
+  <title>Huerta Escolar</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: #f4f6f9;
-      color: #333;
+      background-color: #f1f5f9;
     }
     header {
-      background: #2e7d32;
+      background-color: #1b5e20;
       color: white;
-      padding: 20px;
+      padding: 15px;
       text-align: center;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2em;
-    }
     nav {
-      position: sticky;
-      top: 0;
-      background: #1b5e20;
+      background-color: #2e7d32;
       padding: 10px;
-      z-index: 1000;
       text-align: center;
     }
     nav a {
       color: white;
-      text-decoration: none;
       margin: 0 15px;
+      text-decoration: none;
       font-weight: bold;
-      transition: color 0.3s;
     }
     nav a:hover {
-      color: #a5d6a7;
+      text-decoration: underline;
     }
     section {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 20px;
       background: white;
+      margin: 20px auto;
+      padding: 20px;
       border-radius: 10px;
-      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+      width: 80%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     h2 {
-      color: #2e7d32;
-      margin-top: 0;
-    }
-    ul {
-      line-height: 1.8;
-    }
-    .roles {
-      display: flex;
-      justify-content: space-between;
-    }
-    .roles div {
-      width: 45%;
-      background: #e8f5e9;
-      padding: 10px;
-      border-radius: 8px;
+      color: #1b5e20;
     }
     footer {
       text-align: center;
       padding: 15px;
-      margin-top: 30px;
-      background: #2e7d32;
+      background-color: #1b5e20;
       color: white;
-      font-size: 0.9em;
-    }
-    canvas {
-      margin: 20px auto;
-      display: block;
-      max-width: 700px;
+      margin-top: 20px;
     }
   </style>
+  <!-- Librería de Google Charts -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    function drawCharts() {
+      // Humedad del suelo
+      var data1 = google.visualization.arrayToDataTable([
+        ['Hora', 'Humedad del Suelo'],
+        ['18:04', 550],
+        ['18:04', 480],
+        ['18:04', 600],
+        ['18:05', 650],
+        ['18:05', 620]
+      ]);
+      var options1 = {
+        title: 'Humedad del Suelo',
+        legend: { position: 'top' },
+        colors: ['green'],
+        areaOpacity: 0.3
+      };
+      var chart1 = new google.visualization.AreaChart(document.getElementById('soilChart'));
+      chart1.draw(data1, options1);
+
+      // Temperatura y Humedad
+      var data2 = google.visualization.arrayToDataTable([
+        ['Hora', 'Temperatura (°C)', 'Humedad (%)'],
+        ['18:04', 20, 55],
+        ['18:04', 21, 52],
+        ['18:04', 22, 50],
+        ['18:04', 23, 60],
+        ['18:05', 24, 58]
+      ]);
+      var options2 = {
+        title: 'Temperatura y Humedad',
+        legend: { position: 'top' },
+        colors: ['red', 'blue'],
+        areaOpacity: 0.2
+      };
+      var chart2 = new google.visualization.AreaChart(document.getElementById('tempHumChart'));
+      chart2.draw(data2, options2);
+
+      // Intensidad de luz
+      var data3 = google.visualization.arrayToDataTable([
+        ['Hora', 'Intensidad de Luz (lux)'],
+        ['18:04', 700],
+        ['18:04', 800],
+        ['18:04', 200],
+        ['18:05', 1000],
+        ['18:05', 300]
+      ]);
+      var options3 = {
+        title: 'Intensidad de Luz',
+        legend: { position: 'top' },
+        colors: ['#fbc02d']
+      };
+      var chart3 = new google.visualization.ColumnChart(document.getElementById('lightChart'));
+      chart3.draw(data3, options3);
+    }
+  </script>
 </head>
 <body>
-  <!-- Título -->
   <header>
-    <h1>🌱 Huerta Escolar Automatizada</h1>
-    <p>Proyecto académico</p>
+    <h1>🌱 Proyecto Huerta Escolar Inteligente</h1>
   </header>
 
-  <!-- Menú -->
   <nav>
     <a href="#integrantes">Integrantes</a>
-    <a href="#justificacion">Justificación</a>
     <a href="#sensores">Sensores</a>
     <a href="#app">App</a>
     <a href="#diagrama">Diagrama</a>
-    <a href="#explicacion">Explicación</a>
-    <a href="#comunicacion">Comunicación</a>
-    <a href="#hoja3">Hoja 3</a>
-    <a href="#hoja5">Hoja 5</a>
     <a href="#graficas">Gráficas</a>
   </nav>
 
-  <!-- Integrantes -->
   <section id="integrantes">
-    <h2>👥 Integrantes y Roles</h2>
-    <div class="roles">
-      <div><strong>Líder Técnico:</strong> Marlon Marin</div>
-      <div><strong>Líder Documental:</strong> Marlon Marin</div>
-    </div>
+    <h2>👥 Integrantes</h2>
+    <ul>
+      <li>Nombre 1</li>
+      <li>Nombre 2</li>
+      <li>Nombre 3</li>
+    </ul>
   </section>
 
-  <!-- Justificación -->
-  <section id="justificacion">
-    <h2>🎯 Justificación</h2>
-    <p>
-      La <strong>huerta escolar automatizada</strong> busca la alimentación saludable y el aprendizaje práctico de tecnologías.
-      Mediante sensores se podrá monitorear la humedad del suelo, la luz solar y la temperatura,
-      garantizando mejores condiciones para el crecimiento de las plantas.
-    </p>
-  </section>
-
-  <!-- Sensores -->
   <section id="sensores">
     <h2>🔧 Sensores</h2>
-    <ul>
-      <li><b>Sensor de humedad del suelo:</b> mide cuándo regar.</li>
-      <li><b>DHT11/DHT22:</b> temperatura y humedad del ambiente.</li>
-      <li><b>LDR/BH1750:</b> mide la intensidad de la luz solar.</li>
-    </ul>
+    <p>El sistema utiliza sensores de humedad del suelo, temperatura, humedad ambiental y luz para monitorear las condiciones de la huerta escolar.</p>
   </section>
 
-  <!-- App -->
   <section id="app">
-    <h2>📲 Aplicación</h2>
-    <p>
-      👉 <a href="https://github.com/marlonstiven/hurta-marlon/raw/refs/heads/main/huertaApp.apk" download>Descargar huertaApp.apk</a>
-    </p>
-    <p>
-      👉 <a href="https://github.com/marlonstiven/hurta-marlon/raw/refs/heads/main/huertaApp%20(1).aia" download>Descargar huertaApp.aia</a>
-    </p>
+    <h2>📱 Aplicación</h2>
+    <p>La aplicación móvil/web muestra en tiempo real los datos de los sensores y permite configurar alertas para mantener la huerta en condiciones óptimas.</p>
   </section>
 
-  <!-- Diagrama -->
   <section id="diagrama">
-    <h2>📊 Diagrama del Sistema</h2>
-    <img src="diagrama.png" alt="Diagrama del sistema" style="max-width:80%; display:block; margin:auto; border:1px solid #ccc; border-radius:8px;">
+    <h2>📊 Diagrama</h2>
+    <p>Aquí se muestra el diagrama de bloques del sistema:</p>
+    <img src="conexion.png" alt="Diagrama de Conexión" width="400">
+    <img src="lecturas.png" alt="Diagrama de Lecturas" width="400">
   </section>
 
-  <!-- Explicación -->
-  <section id="explicacion">
-    <h2>⚙️ Explicación Técnica</h2>
-    <ul>
-      <li>Los sensores recogen datos en tiempo real.</li>
-      <li>El <b>ESP32</b> procesa y activa el riego automático.</li>
-      <li>Los datos llegan a la <b>App Inventor</b> por Bluetooth.</li>
-      <li>El usuario puede visualizar y controlar el sistema.</li>
-    </ul>
-  </section>
-
-  <!-- Comunicación -->
-  <section id="comunicacion">
-    <h2>🔗 Comunicación y App</h2>
-    <p><b>Comunicación:</b> Bluetooth → no requiere Internet, bajo consumo.</p>
-    <p><b>Aplicación:</b> App Inventor → fácil y accesible.</p>
-  </section>
-
-  <!-- Hoja de trabajo 3 -->
-  <section id="hoja3">
-    <h2>📅 Hoja de Trabajo 3 – Semana 3</h2>
-    <h3>⚙️ Configuración inicial y pruebas</h3>
-
-    <h4>📸 Evidencia de Conexión</h4>
-    <img src="conexion.png" alt="Conexión del sensor" style="max-width:80%; display:block; margin:auto; border:1px solid #ccc; border-radius:8px;">
-
-    <h4>📊 Lecturas Iniciales</h4>
-    <img src="lecturas.png" alt="Lecturas del sensor" style="max-width:80%; display:block; margin:auto; border:1px solid #ccc; border-radius:8px;">
-
-    <table border="1" style="border-collapse: collapse; margin:20px auto; width:80%; text-align:center;">
-      <tr style="background:#e8f5e9; font-weight:bold;">
-        <td>Fecha</td><td>Sensor</td><td>Lectura</td><td>Observaciones</td>
-      </tr>
-      <tr>
-        <td>17/09/2025</td><td>Humedad suelo</td><td>650</td><td>Tierra húmeda</td>
-      </tr>
-      <tr>
-        <td>17/09/2025</td><td>Humedad suelo</td><td>300</td><td>Tierra seca</td>
-      </tr>
-    </table>
-
-    <h4>📝 Informe</h4>
-    <p>El sensor de humedad se conectó correctamente al ESP32. Se comprobó que en tierra seca los valores rondan 300, mientras que en tierra húmeda aumentan a ~650.</p>
-  </section>
-
-  <!-- Hoja de trabajo 5 -->
-  <section id="hoja5">
-    <h2>📅 Hoja de Trabajo 5 – Semana 5</h2>
-    <h3>🚀 Optimización y funciones adicionales</h3>
-    <h4>Objetivos</h4>
-    <ul>
-      <li>Mejorar la app con nuevas funciones.</li>
-      <li>Integrar más sensores o alertas.</li>
-      <li>Implementar gráficos o registros de datos.</li>
-    </ul>
-
-    <h4>Criterios</h4>
-    <ul>
-      <li>Al menos una mejora funcional.</li>
-      <li>Interfaz amigable.</li>
-      <li>Documentación en la página web.</li>
-    </ul>
-
-    <h4>Entregables</h4>
-    <ul>
-      <li>Aplicación mejorada.</li>
-      <li>Video de funcionamiento.</li>
-      <li>Publicación con capturas, video y resultados.</li>
-    </ul>
-  </section>
-
-  <!-- Gráficas -->
   <section id="graficas">
-    <h2>📈 Gráficas de Lecturas</h2>
-    <canvas id="humedadSuelo"></canvas>
-    <canvas id="tempHum"></canvas>
-    <canvas id="luz"></canvas>
+    <h2>📈 Gráficas de Lecturas en Tiempo Real</h2>
+    <div id="soilChart" style="width: 100%; height: 300px;"></div>
+    <div id="tempHumChart" style="width: 100%; height: 300px;"></div>
+    <div id="lightChart" style="width: 100%; height: 300px;"></div>
   </section>
 
   <footer>
-    🌍 Proyecto académico - GitHub Pages | 2025
+    <p>Huerta Escolar Inteligente © 2025</p>
   </footer>
+</body>
+</html>
 
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    // Humedad suelo
-    new Chart(document.getElementById("humedadSuelo"), {
-      type: "line",
-      data: {
-        labels: ["18:04", "18:04", "18:04", "18:05", "18:05"],
-        datasets: [{
-          label: "Humedad del Suelo",
-          data: [550, 480, 600, 650, 620],
-          borderColor: "green",
-          backgroundColor: "rgba(76,175,80,0.2)",
-          fill: true
-        }]
-      }
-    });
-
-    // Temp y humedad
-    new Chart(document.getElementById("tempHum"), {
-      type: "line",
-      data: {
-        labels: ["18:04", "18:04", "18:04", "18:05", "18:05"],
-        datasets: [
-          {
-            label: "Temperatura (°C)",
-            data: [20, 20, 21, 22, 22],
-            borderColor: "red",
-            backgroundColor: "rgba(244,67,54,0.2)",
-            fill: false
-          },
-          {
-            label: "Humedad (%)",
-            data: [55, 52, 50, 60, 57],
-            borderColor: "blue",
-            backgroundColor: "rgba(33,150,243,0.2)",
-            fill: true
-          }
-        ]
-      }
-    });
-
-    // Luz
-    new Chart(document.getElementById("luz"), {
-      type: "bar",
-      data: {
-        labels: ["18:04", "18:04", "18:04", "18:05", "18:05"],
-        datasets: [{
-          label: "Intensidad de Luz (lux)",
-          data: [700, 800, 200, 950, 150],
-          backgroundColor: "yellow"
-        }]
-      }
-    });
   </script>
 </body>
 </html>

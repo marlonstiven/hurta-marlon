@@ -102,6 +102,10 @@
   <section id="graficas">
     <h2>📈 Gráficas y Alertas en Tiempo Real</h2>
 
+    <!-- Video -->
+    <h3>🎥 Video de Funcionamiento</h3>
+    <iframe src="https://drive.google.com/file/d/17B-P5BZzoICrB_Wc-1YkIQtouLz4yDCS/preview" width="640" height="480" allow="autoplay" style="display:block; margin:auto; border:1px solid #ccc; border-radius:8px;"></iframe>
+
     <h3>💧 Humedad</h3>
     <canvas id="graficaHumedad"></canvas>
     <div id="alertaHumedad" class="alerta ok">✔ Humedad adecuada</div>
@@ -136,7 +140,6 @@
   </footer>
 
   <script>
-    // ---- CONFIGURACIÓN DE GRÁFICAS ----
     const graficaHumedad = new Chart(document.getElementById('graficaHumedad'), {
       type: 'line',
       data: { labels: [], datasets: [{ label: 'Humedad', data: [], borderColor: 'blue', backgroundColor: 'rgba(33,150,243,0.2)', borderWidth: 2, fill: true }] },
@@ -167,24 +170,22 @@
       setTimeout(() => oscillator.stop(), 200);
     }
 
-    // ---- CONTROL DE ACTUALIZACIÓN ----
-    let actualizando = true;
-    document.getElementById("toggleBtn").addEventListener("click", () => {
-      actualizando = !actualizando;
-      const btn = document.getElementById("toggleBtn");
-      btn.textContent = actualizando ? "⏸ Detener Actualización" : "▶️ Continuar Actualización";
+    let actualizar = true;
+    const toggleBtn = document.getElementById("toggleBtn");
+
+    toggleBtn.addEventListener("click", () => {
+      actualizar = !actualizar;
+      toggleBtn.textContent = actualizar ? "⏸ Detener Actualización" : "▶ Continuar Actualización";
     });
 
-    // ---- ACTUALIZACIÓN DE DATOS CADA 1 MINUTO ----
     const intervalo = setInterval(() => {
-      if (!actualizando) return;
+      if(!actualizar) return;
 
       const hora = new Date().toLocaleTimeString().slice(0,5);
       const humedad = obtenerDato(300, 800);
       const temp = obtenerDato(15, 40);
       const luz = obtenerDato(100, 900);
 
-      // Actualizar gráficas
       graficaHumedad.data.labels.push(hora);
       graficaHumedad.data.datasets[0].data.push(humedad);
       graficaHumedad.update();
@@ -197,12 +198,10 @@
       graficaLuz.data.datasets[0].data.push(luz);
       graficaLuz.update();
 
-      // Insertar en tabla
       const fila = document.createElement("tr");
       fila.innerHTML = `<td>${hora}</td><td>${humedad}</td><td>${temp}</td><td>${luz}</td>`;
       document.querySelector("#tabla tbody").appendChild(fila);
 
-      // Alertas
       const alertaHumedad = document.getElementById("alertaHumedad");
       const alertaTemp = document.getElementById("alertaTemp");
       const alertaLuz = document.getElementById("alertaLuz");
@@ -219,9 +218,8 @@
       else if (luz > 800) { alertaLuz.textContent = "⚠ Exceso de luz"; alertaLuz.className = "alerta warn"; beep(); }
       else { alertaLuz.textContent = "✔ Luz adecuada"; alertaLuz.className = "alerta ok"; }
 
-    }, 60000);
+    }, 60000); // cada 1 minuto
 
-    // ---- BOTÓN REINICIAR ----
     document.getElementById("resetBtn").addEventListener("click", () => {
       graficaHumedad.data.labels = []; graficaHumedad.data.datasets[0].data = []; graficaHumedad.update();
       graficaTemp.data.labels = []; graficaTemp.data.datasets[0].data = []; graficaTemp.update();
@@ -232,6 +230,9 @@
       document.getElementById("alertaLuz").textContent = "✔ Luz adecuada"; document.getElementById("alertaLuz").className = "alerta ok";
     });
   </script>
+</body>
+</html>
+
 </body>
 </html>
 

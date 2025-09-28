@@ -6,106 +6,28 @@
   <title>Huerta Escolar Automatizada</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f4f6f9;
-      color: #333;
-    }
-    header {
-      background: #2e7d32;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f6f9; color: #333; }
+    header { background: #2e7d32; color: white; padding: 20px; text-align: center; }
     header h1 { margin: 0; font-size: 2em; }
-    nav {
-      position: sticky;
-      top: 0;
-      background: #1b5e20;
-      padding: 10px;
-      z-index: 1000;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
+    nav { position: sticky; top: 0; background: #1b5e20; padding: 10px; z-index: 1000; text-align: center; }
+    nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; transition: color 0.3s; }
     nav a:hover { color: #a5d6a7; }
-    section {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-    }
+    section { max-width: 1000px; margin: 30px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0,0,0,0.1); }
     h2 { color: #2e7d32; margin-top: 0; }
     ul { line-height: 1.8; }
-    .roles {
-      display: flex;
-      justify-content: space-between;
-    }
-    .roles div {
-      width: 45%;
-      background: #e8f5e9;
-      padding: 10px;
-      border-radius: 8px;
-    }
-    footer {
-      text-align: center;
-      padding: 15px;
-      margin-top: 30px;
-      background: #2e7d32;
-      color: white;
-      font-size: 0.9em;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 15px;
-    }
+    .roles { display: flex; justify-content: space-between; margin-bottom: 20px; }
+    .roles div { width: 45%; background: #e8f5e9; padding: 10px; border-radius: 8px; }
+    footer { text-align: center; padding: 15px; margin-top: 30px; background: #2e7d32; color: white; font-size: 0.9em; }
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; }
     table, th, td { border: 1px solid #c8e6c9; }
-    th {
-      background: #a5d6a7;
-      color: #1b5e20;
-      padding: 8px;
-    }
+    th { background: #a5d6a7; color: #1b5e20; padding: 8px; }
     td { padding: 6px; text-align: center; }
-    #alerta {
-      font-weight: bold;
-      margin: 10px 0;
-      padding: 10px;
-      border-radius: 5px;
-      display: inline-block;
-    }
-    #alerta.ok {
-      background: #e8f5e9;
-      color: #2e7d32;
-      border: 1px solid #2e7d32;
-    }
-    #alerta.warn {
-      background: #ffebee;
-      color: #c62828;
-      border: 1px solid #c62828;
-    }
-    #resetBtn {
-      margin-top: 15px;
-      padding: 10px 20px;
-      background: #1b5e20;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    #resetBtn:hover {
-      background: #388e3c;
-    }
+    .alerta { font-weight: bold; margin: 10px 0; padding: 10px; border-radius: 5px; display: inline-block; }
+    .ok { background: #e8f5e9; color: #2e7d32; border: 1px solid #2e7d32; }
+    .warn { background: #ffebee; color: #c62828; border: 1px solid #c62828; }
+    #resetBtn { margin-top: 15px; padding: 10px 20px; background: #1b5e20; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #resetBtn:hover { background: #388e3c; }
+    canvas { margin: 20px 0; }
   </style>
 </head>
 <body>
@@ -144,20 +66,16 @@
   <section id="sensores">
     <h2>🔧 Sensores</h2>
     <ul>
-      <li>Sensor de humedad del suelo</li>
-      <li>Sensor de temperatura y humedad (DHT11/DHT22)</li>
-      <li>Sensor de luz (LDR o BH1750)</li>
+      <li>💧 Humedad del suelo</li>
+      <li>🌡️ Temperatura (DHT11/DHT22)</li>
+      <li>☀️ Sensor de luz (LDR o BH1750)</li>
     </ul>
   </section>
 
   <section id="app">
     <h2>📲 Descargar la App</h2>
-    <p>
-      👉 <a href="https://github.com/marlonstiven/hurta-marlon/raw/refs/heads/main/huertaApp.apk" download>Descargar huertaApp.apk</a>
-    </p>
-    <p>
-      👉 <a href="https://github.com/marlonstiven/hurta-marlon/raw/refs/heads/main/huertaApp%20(1).aia" download>Descargar huertaApp.aia</a>
-    </p>
+    <p>👉 <a href="https://github.com/marlonstiven/hurta-marlon/raw/refs/heads/main/huertaApp.apk" download>Descargar huertaApp.apk</a></p>
+    <p>👉 <a href="https://github.com/marlonstiven/hurta-marlon/raw/refs/heads/main/huertaApp%20(1).aia" download>Descargar huertaApp.aia</a></p>
   </section>
 
   <section id="diagrama">
@@ -176,22 +94,37 @@
   </section>
 
   <section id="comunicacion">
-    <h2>🔗 Justificación de Comunicación y Aplicación</h2>
+    <h2>🔗 Comunicación y Aplicación</h2>
     <p><b>Comunicación: Bluetooth</b> → No requiere Internet, bajo consumo, conexión rápida.</p>
     <p><b>Aplicación: App Inventor</b> → Fácil, accesible, integra módulos Bluetooth.</p>
   </section>
 
   <section id="graficas">
     <h2>📈 Gráficas y Alertas en Tiempo Real</h2>
-    <canvas id="grafica" width="600" height="300"></canvas>
-    <div id="alerta" class="ok">✔ Humedad del suelo en nivel adecuado</div>
+
+    <!-- HUMEDAD -->
+    <h3>💧 Humedad</h3>
+    <canvas id="graficaHumedad"></canvas>
+    <div id="alertaHumedad" class="alerta ok">✔ Humedad adecuada</div>
+
+    <!-- TEMPERATURA -->
+    <h3>🌡️ Temperatura</h3>
+    <canvas id="graficaTemp"></canvas>
+    <div id="alertaTemp" class="alerta ok">✔ Temperatura adecuada</div>
+
+    <!-- LUZ -->
+    <h3>☀️ Luz</h3>
+    <canvas id="graficaLuz"></canvas>
+    <div id="alertaLuz" class="alerta ok">✔ Luz adecuada</div>
 
     <h3>📋 Registros de Datos</h3>
     <table id="tabla">
       <thead>
         <tr>
           <th>Hora</th>
-          <th>Humedad del Suelo</th>
+          <th>Humedad</th>
+          <th>Temperatura</th>
+          <th>Luz</th>
         </tr>
       </thead>
       <tbody></tbody>
@@ -205,74 +138,93 @@
   </footer>
 
   <script>
-    // Configuración de la gráfica con Chart.js
-    const ctx = document.getElementById('grafica').getContext('2d');
-    const grafica = new Chart(ctx, {
+    // ---- CONFIGURACIÓN DE GRÁFICAS ----
+    const graficaHumedad = new Chart(document.getElementById('graficaHumedad'), {
       type: 'line',
-      data: {
-        labels: [],
-        datasets: [{
-          label: 'Humedad del Suelo',
-          data: [],
-          borderColor: 'green',
-          backgroundColor: 'rgba(76, 175, 80, 0.2)',
-          borderWidth: 2,
-          fill: true,
-        }]
-      },
-      options: {
-        responsive: true,
-        scales: {
-          y: {
-            beginAtZero: true,
-            min: 300,
-            max: 800
-          }
-        }
-      }
+      data: { labels: [], datasets: [{ label: 'Humedad', data: [], borderColor: 'blue', backgroundColor: 'rgba(33,150,243,0.2)', borderWidth: 2, fill: true }] },
+      options: { scales: { y: { min: 300, max: 800 } } }
     });
 
-    // Generar datos simulados
-    function obtenerDato() {
-      return Math.floor(Math.random() * (800 - 300) + 300);
+    const graficaTemp = new Chart(document.getElementById('graficaTemp'), {
+      type: 'line',
+      data: { labels: [], datasets: [{ label: 'Temperatura', data: [], borderColor: 'red', backgroundColor: 'rgba(244,67,54,0.2)', borderWidth: 2, fill: true }] },
+      options: { scales: { y: { min: 0, max: 50 } } }
+    });
+
+    const graficaLuz = new Chart(document.getElementById('graficaLuz'), {
+      type: 'line',
+      data: { labels: [], datasets: [{ label: 'Luz', data: [], borderColor: 'orange', backgroundColor: 'rgba(255,193,7,0.2)', borderWidth: 2, fill: true }] },
+      options: { scales: { y: { min: 0, max: 1000 } } }
+    });
+
+    function obtenerDato(min, max) { return Math.floor(Math.random() * (max - min) + min); }
+
+    function beep() {
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const oscillator = audioCtx.createOscillator();
+      oscillator.type = "square";
+      oscillator.frequency.setValueAtTime(500, audioCtx.currentTime);
+      oscillator.connect(audioCtx.destination);
+      oscillator.start();
+      setTimeout(() => oscillator.stop(), 200);
     }
 
-    // Agregar datos cada 5 segundos
+    // ---- ACTUALIZACIÓN DE DATOS ----
     const intervalo = setInterval(() => {
-      const hora = new Date().toLocaleTimeString().slice(0, 5);
-      const humedad = obtenerDato();
+      const hora = new Date().toLocaleTimeString().slice(0,5);
+      const humedad = obtenerDato(300, 800);
+      const temp = obtenerDato(15, 40);
+      const luz = obtenerDato(100, 900);
 
-      grafica.data.labels.push(hora);
-      grafica.data.datasets[0].data.push(humedad);
-      grafica.update();
+      // Actualizar gráficas
+      graficaHumedad.data.labels.push(hora);
+      graficaHumedad.data.datasets[0].data.push(humedad);
+      graficaHumedad.update();
 
+      graficaTemp.data.labels.push(hora);
+      graficaTemp.data.datasets[0].data.push(temp);
+      graficaTemp.update();
+
+      graficaLuz.data.labels.push(hora);
+      graficaLuz.data.datasets[0].data.push(luz);
+      graficaLuz.update();
+
+      // Insertar en la tabla
       const fila = document.createElement("tr");
-      fila.innerHTML = `<td>${hora}</td><td>${humedad}</td>`;
+      fila.innerHTML = `<td>${hora}</td><td>${humedad}</td><td>${temp}</td><td>${luz}</td>`;
       document.querySelector("#tabla tbody").appendChild(fila);
 
-      const alerta = document.getElementById("alerta");
-      if (humedad < 400) {
-        alerta.textContent = "⚠ Humedad baja, necesita riego";
-        alerta.className = "warn";
-      } else if (humedad > 700) {
-        alerta.textContent = "⚠ Humedad alta, evitar exceso de agua";
-        alerta.className = "warn";
-      } else {
-        alerta.textContent = "✔ Humedad del suelo en nivel adecuado";
-        alerta.className = "ok";
-      }
+      // Alertas
+      const alertaHumedad = document.getElementById("alertaHumedad");
+      const alertaTemp = document.getElementById("alertaTemp");
+      const alertaLuz = document.getElementById("alertaLuz");
+
+      if (humedad < 400) { alertaHumedad.textContent = "⚠ Humedad baja"; alertaHumedad.className = "alerta warn"; beep(); }
+      else if (humedad > 700) { alertaHumedad.textContent = "⚠ Humedad alta"; alertaHumedad.className = "alerta warn"; beep(); }
+      else { alertaHumedad.textContent = "✔ Humedad adecuada"; alertaHumedad.className = "alerta ok"; }
+
+      if (temp < 18) { alertaTemp.textContent = "⚠ Temperatura baja"; alertaTemp.className = "alerta warn"; beep(); }
+      else if (temp > 35) { alertaTemp.textContent = "⚠ Temperatura alta"; alertaTemp.className = "alerta warn"; beep(); }
+      else { alertaTemp.textContent = "✔ Temperatura adecuada"; alertaTemp.className = "alerta ok"; }
+
+      if (luz < 200) { alertaLuz.textContent = "⚠ Poca luz"; alertaLuz.className = "alerta warn"; beep(); }
+      else if (luz > 800) { alertaLuz.textContent = "⚠ Exceso de luz"; alertaLuz.className = "alerta warn"; beep(); }
+      else { alertaLuz.textContent = "✔ Luz adecuada"; alertaLuz.className = "alerta ok"; }
+
     }, 5000);
 
-    // Función para reiniciar datos
+    // ---- BOTÓN REINICIAR ----
     document.getElementById("resetBtn").addEventListener("click", () => {
-      grafica.data.labels = [];
-      grafica.data.datasets[0].data = [];
-      grafica.update();
+      graficaHumedad.data.labels = []; graficaHumedad.data.datasets[0].data = []; graficaHumedad.update();
+      graficaTemp.data.labels = []; graficaTemp.data.datasets[0].data = []; graficaTemp.update();
+      graficaLuz.data.labels = []; graficaLuz.data.datasets[0].data = []; graficaLuz.update();
       document.querySelector("#tabla tbody").innerHTML = "";
-      document.getElementById("alerta").textContent = "✔ Humedad del suelo en nivel adecuado";
-      document.getElementById("alerta").className = "ok";
+      document.getElementById("alertaHumedad").textContent = "✔ Humedad adecuada"; document.getElementById("alertaHumedad").className = "alerta ok";
+      document.getElementById("alertaTemp").textContent = "✔ Temperatura adecuada"; document.getElementById("alertaTemp").className = "alerta ok";
+      document.getElementById("alertaLuz").textContent = "✔ Luz adecuada"; document.getElementById("alertaLuz").className = "alerta ok";
     });
   </script>
 </body>
 </html>
+
 

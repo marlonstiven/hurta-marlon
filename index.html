@@ -4,165 +4,233 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Huerta Escolar Automatizada</title>
-
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-  /* ===== Estilos Generales ===== */
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f6fff7;
-    color: #222;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-  }
-
-  h1, h2, h3 {
-    color: #14532d;
-    margin-top: 1.2rem;
-  }
-
-  /* ===== Encabezado ===== */
-  header {
-    background-color: #16a34a;
-    color: white;
-    text-align: center;
-    padding: 1rem 0;
-    font-size: 1.5rem;
-    font-weight: bold;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  }
-
-  /* ===== Secciones ===== */
-  section {
-    background: white;
-    margin: 1rem auto;
-    padding: 1rem 1.5rem;
-    max-width: 900px;
-    border-radius: 12px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-  }
-
-  /* ===== Listas ===== */
-  ul {
-    padding-left: 1.2rem;
-  }
-
-  li {
-    margin-bottom: 0.5rem;
-  }
-
-  /* ===== Enlaces ===== */
-  a {
-    text-decoration: none;
-    color: #16a34a;
-    font-weight: bold;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-
-  /* ===== Imágenes ===== */
-  img {
-    max-width: 100%;
-    display: block;
-    margin: 0.8rem auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  }
-
-  /* ===== Iconos e ítems ===== */
-  .icon {
-    margin-right: 0.5rem;
-    font-size: 1.3rem;
-    vertical-align: middle;
-  }
-
-  /* ===== Bloques especiales ===== */
-  .card {
-    background: #f0fdf4;
-    border-left: 6px solid #16a34a;
-    padding: 0.8rem 1rem;
-    margin: 0.8rem 0;
-    border-radius: 8px;
-  }
-
-  .alerta {
-    background: #fff7ed;
-    border-left: 6px solid #f97316;
-  }
-
-  /* ===== Botones de descarga ===== */
-  .btn {
-    display: inline-block;
-    padding: 10px 18px;
-    margin: 5px 0;
-    background-color: #16a34a;
-    color: white;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: 0.3s ease;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  }
-
-  .btn:hover {
-    background-color: #15803d;
-    transform: scale(1.03);
-  }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f6f9; color: #333; }
+    header { background: #2e7d32; color: white; padding: 20px; text-align: center; }
+    header h1 { margin: 0; font-size: 2em; }
+    nav { position: sticky; top: 0; background: #1b5e20; padding: 10px; z-index: 1000; text-align: center; }
+    nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; transition: color 0.3s; }
+    nav a:hover { color: #a5d6a7; }
+    section { max-width: 1000px; margin: 30px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0,0,0,0.1); }
+    h2 { color: #2e7d32; margin-top: 0; }
+    ul { line-height: 1.8; }
+    .roles { display: flex; justify-content: space-between; margin-bottom: 20px; }
+    .roles div { width: 45%; background: #e8f5e9; padding: 10px; border-radius: 8px; }
+    footer { text-align: center; padding: 15px; margin-top: 30px; background: #2e7d32; color: white; font-size: 0.9em; }
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+    table, th, td { border: 1px solid #c8e6c9; }
+    th { background: #a5d6a7; color: #1b5e20; padding: 8px; }
+    td { padding: 6px; text-align: center; }
+    .alerta { font-weight: bold; margin: 10px 0; padding: 10px; border-radius: 5px; display: inline-block; }
+    .ok { background: #e8f5e9; color: #2e7d32; border: 1px solid #2e7d32; }
+    .warn { background: #ffebee; color: #c62828; border: 1px solid #c62828; }
+    #resetBtn { margin-top: 15px; padding: 10px 20px; background: #1b5e20; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    #resetBtn:hover { background: #388e3c; }
+    canvas { margin: 20px 0; }
+    video { display: block; margin: 10px 0; border-radius: 8px; }
+    img { display: block; margin: 10px 0; max-width: 100%; border-radius: 8px; }
   </style>
 </head>
 <body>
-
   <header>
-    🌱 Huerta Escolar Automatizada
+    <h1>🌱 Huerta Escolar Automatizada</h1>
+    <p>Proyecto académico</p>
   </header>
 
-  <section>
-    <h2><span class="icon">💡</span> Sensores del Sistema</h2>
+  <nav>
+    <a href="#integrantes">Integrantes</a>
+    <a href="#justificacion">Justificación</a>
+    <a href="#sensores">Sensores</a>
+    <a href="#app">App</a>
+    <a href="#diagrama">Diagrama</a>
+    <a href="#explicacion">Explicación</a>
+    <a href="#comunicacion">Comunicación</a>
+    <a href="#graficas">Gráficas</a>
+    <a href="#media">Media</a>
+  </nav>
+
+  <section id="integrantes">
+    <h2>👥 Integrantes y Roles</h2>
+    <div class="roles">
+      <div><strong>Líder Técnico:</strong> Marlon Marin</div>
+      <div><strong>Líder Documental:</strong> Marlon Marin</div>
+    </div>
+  </section>
+
+  <section id="justificacion">
+    <h2>🎯 Justificación</h2>
+    <p>
+      La <strong>huerta escolar automatizada</strong> busca la alimentación saludable y el aprendizaje práctico de tecnologías.
+      Mediante sensores se podrá monitorear la humedad del suelo, la luz solar y la temperatura, garantizando mejores condiciones para el crecimiento de las plantas.
+    </p>
+  </section>
+
+  <section id="sensores">
+    <h2>🔧 Sensores</h2>
     <ul>
-      <li>🌞 Sensor de luz (LDR o BH1750)</li>
-      <li>💧 Sensor de humedad de suelo</li>
-      <li>🌡 Sensor de temperatura y humedad ambiental (DHT11/DHT22)</li>
+      <li>💧 Humedad del suelo</li>
+      <li>🌡️ Temperatura (DHT11/DHT22)</li>
+      <li>☀️ Sensor de luz (LDR o BH1750)</li>
     </ul>
   </section>
 
-  <section>
-    <h2><span class="icon">📥</span> Descargar la App</h2>
-    <a href="huertaApp.apk" class="btn" download>📱 Descargar huertaApp.apk</a><br>
-    <a href="huertaApp.aia" class="btn" download>📂 Descargar huertaApp.aia</a>
+  <section id="app">
+    <h2>📲 Descargar la App</h2>
+    <p>👉 <a href="https://github.com/marlonstiven/hurta-marlon/raw/refs/heads/main/huertaApp.apk" download>Descargar huertaApp.apk</a></p>
+    <p>👉 <a href="https://github.com/marlonstiven/hurta-marlon/raw/refs/heads/main/huertaApp%20(1).aia" download>Descargar huertaApp.aia</a></p>
   </section>
 
-  <section>
-    <h2><span class="icon">📊</span> Diagrama de Bloques del Sistema</h2>
+  <section id="diagrama">
+    <h2>📊 Diagrama de Bloques del Sistema</h2>
     <img src="diagrama.png" alt="Diagrama del sistema">
   </section>
 
-  <section>
-    <h2><span class="icon">🛠</span> Explicación del Diseño Técnico</h2>
+  <section id="explicacion">
+    <h2>⚙️ Explicación del Diseño Técnico</h2>
     <ul>
       <li>Los sensores recogen datos en tiempo real.</li>
-      <li>El <strong>ESP32</strong> procesa la información y decide si activar el riego automático.</li>
-      <li>Los datos se envían a la <strong>app</strong> en App Inventor mediante Bluetooth.</li>
+      <li>El <b>ESP32</b> procesa la información y decide si activar el riego automático.</li>
+      <li>Los datos se envían a la <b>app en App Inventor</b> mediante Bluetooth.</li>
       <li>El usuario puede visualizar y controlar manualmente el sistema de riego.</li>
     </ul>
   </section>
 
-  <section>
-    <h2><span class="icon">📡</span> Comunicación y Aplicación</h2>
-    <p><strong>Comunicación:</strong> Bluetooth → No requiere Internet, bajo consumo, conexión rápida.</p>
-    <p><strong>Aplicación:</strong> App Inventor → Fácil, accesible, integra módulos Bluetooth.</p>
+  <section id="comunicacion">
+    <h2>🔗 Comunicación y Aplicación</h2>
+    <p><b>Comunicación: Bluetooth</b> → No requiere Internet, bajo consumo, conexión rápida.</p>
+    <p><b>Aplicación: App Inventor</b> → Fácil, accesible, integra módulos Bluetooth.</p>
   </section>
 
-  <section>
-    <h2><span class="icon">📈</span> Gráficas y Alertas en Tiempo Real</h2>
-    <div class="card alerta">
-      💧 Humedad — Sistema enviará alerta si el nivel es bajo.
-    </div>
+  <section id="graficas">
+    <h2>📈 Gráficas y Alertas en Tiempo Real</h2>
+
+    <h3>💧 Humedad</h3>
+    <canvas id="graficaHumedad"></canvas>
+    <div id="alertaHumedad" class="alerta ok">✔ Humedad adecuada</div>
+
+    <h3>🌡️ Temperatura</h3>
+    <canvas id="graficaTemp"></canvas>
+    <div id="alertaTemp" class="alerta ok">✔ Temperatura adecuada</div>
+
+    <h3>☀️ Luz</h3>
+    <canvas id="graficaLuz"></canvas>
+    <div id="alertaLuz" class="alerta ok">✔ Luz adecuada</div>
+
+    <h3>📋 Registros de Datos</h3>
+    <table id="tabla">
+      <thead>
+        <tr>
+          <th>Hora</th>
+          <th>Humedad</th>
+          <th>Temperatura</th>
+          <th>Luz</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <button id="resetBtn">🔄 Reiniciar datos</button>
   </section>
 
+  <!-- NUEVA SECCIÓN DE MEDIA -->
+  <section id="media">
+    <h2>🎥 Visualización de Video e Imágenes</h2>
+
+    <video id="videoHuerta" width="600" controls>
+      <source src="videoHuerta.mp4" type="video/mp4">
+      Tu navegador no soporta videos.
+    </video>
+
+    <h3>📸 Imagen de la Huerta</h3>
+    <img src="huerta.png" alt="Huerta Escolar">
+  </section>
+
+  <footer>
+    🌍 Proyecto académico - GitHub Pages | 2025
+  </footer>
+
+  <script>
+    // ---- CONFIGURACIÓN DE GRÁFICAS ----
+    const graficaHumedad = new Chart(document.getElementById('graficaHumedad'), {
+      type: 'line',
+      data: { labels: [], datasets: [{ label: 'Humedad', data: [], borderColor: 'blue', backgroundColor: 'rgba(33,150,243,0.2)', borderWidth: 2, fill: true }] },
+      options: { scales: { y: { min: 300, max: 800 } } }
+    });
+
+    const graficaTemp = new Chart(document.getElementById('graficaTemp'), {
+      type: 'line',
+      data: { labels: [], datasets: [{ label: 'Temperatura', data: [], borderColor: 'red', backgroundColor: 'rgba(244,67,54,0.2)', borderWidth: 2, fill: true }] },
+      options: { scales: { y: { min: 0, max: 50 } } }
+    });
+
+    const graficaLuz = new Chart(document.getElementById('graficaLuz'), {
+      type: 'line',
+      data: { labels: [], datasets: [{ label: 'Luz', data: [], borderColor: 'orange', backgroundColor: 'rgba(255,193,7,0.2)', borderWidth: 2, fill: true }] },
+      options: { scales: { y: { min: 0, max: 1000 } } }
+    });
+
+    function obtenerDato(min, max) { return Math.floor(Math.random() * (max - min) + min); }
+
+    function beep() {
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const oscillator = audioCtx.createOscillator();
+      oscillator.type = "square";
+      oscillator.frequency.setValueAtTime(500, audioCtx.currentTime);
+      oscillator.connect(audioCtx.destination);
+      oscillator.start();
+      setTimeout(() => oscillator.stop(), 200);
+    }
+
+    const intervalo = setInterval(() => {
+      const hora = new Date().toLocaleTimeString().slice(0,5);
+      const humedad = obtenerDato(300, 800);
+      const temp = obtenerDato(15, 40);
+      const luz = obtenerDato(100, 900);
+
+      graficaHumedad.data.labels.push(hora);
+      graficaHumedad.data.datasets[0].data.push(humedad);
+      graficaHumedad.update();
+
+      graficaTemp.data.labels.push(hora);
+      graficaTemp.data.datasets[0].data.push(temp);
+      graficaTemp.update();
+
+      graficaLuz.data.labels.push(hora);
+      graficaLuz.data.datasets[0].data.push(luz);
+      graficaLuz.update();
+
+      const fila = document.createElement("tr");
+      fila.innerHTML = `<td>${hora}</td><td>${humedad}</td><td>${temp}</td><td>${luz}</td>`;
+      document.querySelector("#tabla tbody").appendChild(fila);
+
+      const alertaHumedad = document.getElementById("alertaHumedad");
+      const alertaTemp = document.getElementById("alertaTemp");
+      const alertaLuz = document.getElementById("alertaLuz");
+
+      if (humedad < 400) { alertaHumedad.textContent = "⚠ Humedad baja"; alertaHumedad.className = "alerta warn"; beep(); }
+      else if (humedad > 700) { alertaHumedad.textContent = "⚠ Humedad alta"; alertaHumedad.className = "alerta warn"; beep(); }
+      else { alertaHumedad.textContent = "✔ Humedad adecuada"; alertaHumedad.className = "alerta ok"; }
+
+      if (temp < 18) { alertaTemp.textContent = "⚠ Temperatura baja"; alertaTemp.className = "alerta warn"; beep(); }
+      else if (temp > 35) { alertaTemp.textContent = "⚠ Temperatura alta"; alertaTemp.className = "alerta warn"; beep(); }
+      else { alertaTemp.textContent = "✔ Temperatura adecuada"; alertaTemp.className = "alerta ok"; }
+
+      if (luz < 200) { alertaLuz.textContent = "⚠ Poca luz"; alertaLuz.className = "alerta warn"; beep(); }
+      else if (luz > 800) { alertaLuz.textContent = "⚠ Exceso de luz"; alertaLuz.className = "alerta warn"; beep(); }
+      else { alertaLuz.textContent = "✔ Luz adecuada"; alertaLuz.className = "alerta ok"; }
+    }, 5000);
+
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      graficaHumedad.data.labels = []; graficaHumedad.data.datasets[0].data = []; graficaHumedad.update();
+      graficaTemp.data.labels = []; graficaTemp.data.datasets[0].data = []; graficaTemp.update();
+      graficaLuz.data.labels = []; graficaLuz.data.datasets[0].data = []; graficaLuz.update();
+      document.querySelector("#tabla tbody").innerHTML = "";
+      document.getElementById("alertaHumedad").textContent = "✔ Humedad adecuada"; document.getElementById("alertaHumedad").className = "alerta ok";
+      document.getElementById("alertaTemp").textContent = "✔ Temperatura adecuada"; document.getElementById("alertaTemp").className = "alerta ok";
+      document.getElementById("alertaLuz").textContent = "✔ Luz adecuada"; document.getElementById("alertaLuz").className = "alerta ok";
+    });
+  </script>
 </body>
 </html>
-
-
-
 

@@ -19,10 +19,7 @@
       padding: 20px;
       text-align: center;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2em;
-    }
+    header h1 { margin: 0; font-size: 2em; }
     nav {
       position: sticky;
       top: 0;
@@ -38,9 +35,7 @@
       font-weight: bold;
       transition: color 0.3s;
     }
-    nav a:hover {
-      color: #a5d6a7;
-    }
+    nav a:hover { color: #a5d6a7; }
     section {
       max-width: 900px;
       margin: 30px auto;
@@ -49,13 +44,8 @@
       border-radius: 10px;
       box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
     }
-    h2 {
-      color: #2e7d32;
-      margin-top: 0;
-    }
-    ul {
-      line-height: 1.8;
-    }
+    h2 { color: #2e7d32; margin-top: 0; }
+    ul { line-height: 1.8; }
     .roles {
       display: flex;
       justify-content: space-between;
@@ -79,18 +69,13 @@
       border-collapse: collapse;
       margin-top: 15px;
     }
-    table, th, td {
-      border: 1px solid #c8e6c9;
-    }
+    table, th, td { border: 1px solid #c8e6c9; }
     th {
       background: #a5d6a7;
       color: #1b5e20;
       padding: 8px;
     }
-    td {
-      padding: 6px;
-      text-align: center;
-    }
+    td { padding: 6px; text-align: center; }
     #alerta {
       font-weight: bold;
       margin: 10px 0;
@@ -107,6 +92,19 @@
       background: #ffebee;
       color: #c62828;
       border: 1px solid #c62828;
+    }
+    #resetBtn {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #1b5e20;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    #resetBtn:hover {
+      background: #388e3c;
     }
   </style>
 </head>
@@ -136,7 +134,7 @@
   </section>
 
   <section id="justificacion">
-    <h2>🎯 Justificación Breve</h2>
+    <h2>🎯 Justificación</h2>
     <p>
       La <strong>huerta escolar automatizada</strong> busca la alimentación saludable y el aprendizaje práctico de tecnologías.
       Mediante sensores se podrá monitorear la humedad del suelo, la luz solar y la temperatura, garantizando mejores condiciones para el crecimiento de las plantas.
@@ -144,11 +142,11 @@
   </section>
 
   <section id="sensores">
-    <h2>🔧 Posibles Sensores a Emplear</h2>
+    <h2>🔧 Sensores</h2>
     <ul>
-      <li><b>Sensor de humedad del suelo:</b> mide el nivel de humedad para saber cuándo regar.</li>
-      <li><b>Sensor de temperatura y humedad (DHT11/DHT22):</b> registra condiciones climáticas.</li>
-      <li><b>Sensor de luz (LDR o BH1750):</b> mide la intensidad de la luz solar.</li>
+      <li>Sensor de humedad del suelo</li>
+      <li>Sensor de temperatura y humedad (DHT11/DHT22)</li>
+      <li>Sensor de luz (LDR o BH1750)</li>
     </ul>
   </section>
 
@@ -198,6 +196,8 @@
       </thead>
       <tbody></tbody>
     </table>
+
+    <button id="resetBtn">🔄 Reiniciar datos</button>
   </section>
 
   <footer>
@@ -238,7 +238,7 @@
     }
 
     // Agregar datos cada 5 segundos
-    setInterval(() => {
+    const intervalo = setInterval(() => {
       const hora = new Date().toLocaleTimeString().slice(0, 5);
       const humedad = obtenerDato();
 
@@ -262,10 +262,16 @@
         alerta.className = "ok";
       }
     }, 5000);
-  </script>
-</body>
-</html>
 
+    // Función para reiniciar datos
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      grafica.data.labels = [];
+      grafica.data.datasets[0].data = [];
+      grafica.update();
+      document.querySelector("#tabla tbody").innerHTML = "";
+      document.getElementById("alerta").textContent = "✔ Humedad del suelo en nivel adecuado";
+      document.getElementById("alerta").className = "ok";
+    });
   </script>
 </body>
 </html>

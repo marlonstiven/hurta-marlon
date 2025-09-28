@@ -1,169 +1,165 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Huerta Escolar Automatizada</title>
-  <!-- Mantener el CSS que ya tenías -->
-  <link rel="stylesheet" href="styles.css">
+
+  <style>
+  /* ===== Estilos Generales ===== */
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f6fff7;
+    color: #222;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3 {
+    color: #14532d;
+    margin-top: 1.2rem;
+  }
+
+  /* ===== Encabezado ===== */
+  header {
+    background-color: #16a34a;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+
+  /* ===== Secciones ===== */
+  section {
+    background: white;
+    margin: 1rem auto;
+    padding: 1rem 1.5rem;
+    max-width: 900px;
+    border-radius: 12px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  }
+
+  /* ===== Listas ===== */
+  ul {
+    padding-left: 1.2rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* ===== Enlaces ===== */
+  a {
+    text-decoration: none;
+    color: #16a34a;
+    font-weight: bold;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* ===== Imágenes ===== */
+  img {
+    max-width: 100%;
+    display: block;
+    margin: 0.8rem auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  /* ===== Iconos e ítems ===== */
+  .icon {
+    margin-right: 0.5rem;
+    font-size: 1.3rem;
+    vertical-align: middle;
+  }
+
+  /* ===== Bloques especiales ===== */
+  .card {
+    background: #f0fdf4;
+    border-left: 6px solid #16a34a;
+    padding: 0.8rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 8px;
+  }
+
+  .alerta {
+    background: #fff7ed;
+    border-left: 6px solid #f97316;
+  }
+
+  /* ===== Botones de descarga ===== */
+  .btn {
+    display: inline-block;
+    padding: 10px 18px;
+    margin: 5px 0;
+    background-color: #16a34a;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  .btn:hover {
+    background-color: #15803d;
+    transform: scale(1.03);
+  }
+  </style>
 </head>
 <body>
+
   <header>
-    <h1>🌱 Huerta Escolar Automatizada</h1>
-    <p>Proyecto académico</p>
+    🌱 Huerta Escolar Automatizada
   </header>
 
-  <!-- Menú de navegación -->
-  <nav>
-    <a href="#integrantes">Integrantes</a>
-    <a href="#justificacion">Justificación</a>
-    <a href="#sensores">Sensores</a>
-    <a href="#app">App</a>
-    <a href="#diagrama">Diagrama</a>
-    <a href="#explicacion">Explicación</a>
-    <a href="#comunicacion">Comunicación</a>
-    <a href="#graficas">Gráficas</a>
-    <!-- NUEVOS BOTONES -->
-    <a href="#galeria">Galería</a>
-    <a href="#resultados">Resultados</a>
-  </nav>
-
-  <!-- Sección Integrantes -->
-  <section id="integrantes">
-    <h2>👥 Integrantes y Roles</h2>
-    <div class="card">
-      <p><strong>Líder Técnico:</strong> Marlon Marín</p>
-      <p><strong>Líder Documental:</strong> Marlon Marín</p>
-    </div>
-  </section>
-
-  <!-- Sección Justificación -->
-  <section id="justificacion">
-    <h2>🎯 Justificación Breve</h2>
-    <p>La <strong>huerta escolar automatizada</strong> busca la alimentación saludable y el aprendizaje práctico de tecnologías. Mediante sensores se podrá monitorear la humedad del suelo, la luz solar y la temperatura, garantizando mejores condiciones para el crecimiento de las plantas.</p>
-  </section>
-
-  <!-- Sección Sensores -->
-  <section id="sensores">
-    <h2>🔧 Posibles Sensores a Emplear</h2>
+  <section>
+    <h2><span class="icon">💡</span> Sensores del Sistema</h2>
     <ul>
-      <li><b>Sensor de humedad del suelo:</b> mide el nivel de humedad para saber cuándo regar.</li>
-      <li><b>Sensor de temperatura y humedad (DHT11/DHT22):</b> registra condiciones climáticas.</li>
-      <li><b>Sensor de luz (LDR o BH1750):</b> detecta luminosidad para evaluar exposición solar.</li>
+      <li>🌞 Sensor de luz (LDR o BH1750)</li>
+      <li>💧 Sensor de humedad de suelo</li>
+      <li>🌡 Sensor de temperatura y humedad ambiental (DHT11/DHT22)</li>
     </ul>
   </section>
 
-  <!-- Sección App -->
-  <section id="app">
-    <h2>📲 Descargar la App</h2>
-    <a href="huertaApp.apk" download>📥 Descargar huertaApp.apk</a><br>
-    <a href="huertaApp.aia" download>📥 Descargar huertaApp.aia</a>
+  <section>
+    <h2><span class="icon">📥</span> Descargar la App</h2>
+    <a href="huertaApp.apk" class="btn" download>📱 Descargar huertaApp.apk</a><br>
+    <a href="huertaApp.aia" class="btn" download>📂 Descargar huertaApp.aia</a>
   </section>
 
-  <!-- Sección Diagrama -->
-  <section id="diagrama">
-    <h2>📊 Diagrama de Bloques del Sistema</h2>
-    <img src="diagrama.png" alt="Diagrama del sistema" style="max-width:100%; border-radius:10px;">
+  <section>
+    <h2><span class="icon">📊</span> Diagrama de Bloques del Sistema</h2>
+    <img src="diagrama.png" alt="Diagrama del sistema">
   </section>
 
-  <!-- Sección Explicación -->
-  <section id="explicacion">
-    <h2>⚙️ Explicación del Diseño Técnico</h2>
+  <section>
+    <h2><span class="icon">🛠</span> Explicación del Diseño Técnico</h2>
     <ul>
       <li>Los sensores recogen datos en tiempo real.</li>
-      <li>El <b>ESP32</b> procesa la información y decide si activar el riego automático.</li>
-      <li>Los datos se envían a la <b>app en App Inventor</b> mediante Bluetooth.</li>
+      <li>El <strong>ESP32</strong> procesa la información y decide si activar el riego automático.</li>
+      <li>Los datos se envían a la <strong>app</strong> en App Inventor mediante Bluetooth.</li>
       <li>El usuario puede visualizar y controlar manualmente el sistema de riego.</li>
     </ul>
   </section>
 
-  <!-- Sección Comunicación -->
-  <section id="comunicacion">
-    <h2>🔗 Justificación de Comunicación y Aplicación</h2>
-    <p><b>Comunicación:</b> Bluetooth → No requiere Internet, bajo consumo, conexión rápida.</p>
-    <p><b>Aplicación:</b> App Inventor → Fácil, accesible, integra módulos Bluetooth.</p>
+  <section>
+    <h2><span class="icon">📡</span> Comunicación y Aplicación</h2>
+    <p><strong>Comunicación:</strong> Bluetooth → No requiere Internet, bajo consumo, conexión rápida.</p>
+    <p><strong>Aplicación:</strong> App Inventor → Fácil, accesible, integra módulos Bluetooth.</p>
   </section>
 
-  <!-- Sección Gráficas -->
-  <section id="graficas">
-    <h2>📈 Gráficas y Alertas en Tiempo Real</h2>
-    <canvas id="graficaHumedad"></canvas>
-  </section>
-
-  <!-- NUEVA SECCIÓN: Galería -->
-  <section id="galeria">
-    <h2>🖼️ Galería y Video</h2>
-    <p>A continuación se muestran imágenes y un video del sistema funcionando en la huerta escolar.</p>
-    <div class="galeria">
-      <img src="foto1.jpg" alt="ESP32 conectado">
-      <img src="foto2.jpg" alt="Sensores en la tierra">
-      <img src="foto3.jpg" alt="Riego automático activado">
-    </div>
-    <div class="video">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/TU_LINK_AQUI" frameborder="0" allowfullscreen></iframe>
+  <section>
+    <h2><span class="icon">📈</span> Gráficas y Alertas en Tiempo Real</h2>
+    <div class="card alerta">
+      💧 Humedad — Sistema enviará alerta si el nivel es bajo.
     </div>
   </section>
 
-  <!-- NUEVA SECCIÓN: Resultados -->
-  <section id="resultados">
-    <h2>📊 Resultados y Conclusiones</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Día</th>
-          <th>Humedad Promedio</th>
-          <th>Temperatura Promedio</th>
-          <th>Observaciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Día 1</td>
-          <td>520</td>
-          <td>27°C</td>
-          <td>Humedad baja, el riego automático se activó.</td>
-        </tr>
-        <tr>
-          <td>Día 3</td>
-          <td>680</td>
-          <td>28°C</td>
-          <td>Humedad estable, crecimiento notable.</td>
-        </tr>
-        <tr>
-          <td>Día 5</td>
-          <td>700</td>
-          <td>30°C</td>
-          <td>Nivel óptimo, sistema funcionando correctamente.</td>
-        </tr>
-      </tbody>
-    </table>
-    <h3>Conclusión</h3>
-    <p>El sistema mantuvo la humedad entre <b>500 y 700</b>, optimizando el uso del agua y mejorando el crecimiento de las plantas. La comunicación por Bluetooth fue estable y permitió el monitoreo en tiempo real.</p>
-  </section>
-
-  <footer>
-    <p>📚 Proyecto académico - GitHub Pages | 2025</p>
-  </footer>
-
-  <!-- Script de la gráfica (Chart.js o el que ya usas) -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    const ctx = document.getElementById('graficaHumedad');
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['18:04', '18:05', '18:06', '18:07', '18:08'],
-        datasets: [{
-          label: 'Humedad del Suelo',
-          data: [550, 380, 620, 450, 700],
-          fill: true,
-          borderColor: 'green',
-          backgroundColor: 'rgba(0, 128, 0, 0.2)'
-        }]
-      },
-      options: { responsive: true }
-    });
-  </script>
 </body>
 </html>
 

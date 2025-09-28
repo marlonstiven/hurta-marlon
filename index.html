@@ -1,232 +1,172 @@
-<li>☀️ Sensor de luz (LDR o BH1750)</li>
-</ul>
-</section>
+<<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Huerta Escolar Automatizada</title>
+  <!-- Mantener el CSS que ya tenías -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>🌱 Huerta Escolar Automatizada</h1>
+    <p>Proyecto académico</p>
+  </header>
 
-<section id="app">
-  <h2>📲 Descargar la App</h2>
-  <p>👉 <a href="https://github.com/marlonstiven/hurta-marlon/raw/refs/heads/main/huertaApp.apk" download>Descargar huertaApp.apk</a></p>
-  <p>👉 <a href="https://github.com/marlonstiven/hurta-marlon/raw/refs/heads/main/huertaApp%20(1).aia" download>Descargar huertaApp.aia</a></p>
-</section>
+  <!-- Menú de navegación -->
+  <nav>
+    <a href="#integrantes">Integrantes</a>
+    <a href="#justificacion">Justificación</a>
+    <a href="#sensores">Sensores</a>
+    <a href="#app">App</a>
+    <a href="#diagrama">Diagrama</a>
+    <a href="#explicacion">Explicación</a>
+    <a href="#comunicacion">Comunicación</a>
+    <a href="#graficas">Gráficas</a>
+    <!-- NUEVOS BOTONES -->
+    <a href="#galeria">Galería</a>
+    <a href="#resultados">Resultados</a>
+  </nav>
 
-<section id="diagrama">
-  <h2>📊 Diagrama de Bloques del Sistema</h2>
-  <img src="diagrama.png" alt="Diagrama del sistema" style="max-width:80%; border:1px solid #ccc; border-radius:8px; display:block; margin:auto;">
-</section>
+  <!-- Sección Integrantes -->
+  <section id="integrantes">
+    <h2>👥 Integrantes y Roles</h2>
+    <div class="card">
+      <p><strong>Líder Técnico:</strong> Marlon Marín</p>
+      <p><strong>Líder Documental:</strong> Marlon Marín</p>
+    </div>
+  </section>
 
-<section id="explicacion">
-  <h2>⚙️ Explicación del Diseño Técnico</h2>
-  <ul>
-    <li>Los sensores recogen datos en tiempo real.</li>
-    <li>El <b>ESP32</b> procesa la información y decide si activar el riego automático.</li>
-    <li>Los datos se envían a la <b>app en App Inventor</b> mediante Bluetooth.</li>
-    <li>El usuario puede visualizar y controlar manualmente el sistema de riego.</li>
-  </ul>
-</section>
+  <!-- Sección Justificación -->
+  <section id="justificacion">
+    <h2>🎯 Justificación Breve</h2>
+    <p>La <strong>huerta escolar automatizada</strong> busca la alimentación saludable y el aprendizaje práctico de tecnologías. Mediante sensores se podrá monitorear la humedad del suelo, la luz solar y la temperatura, garantizando mejores condiciones para el crecimiento de las plantas.</p>
+  </section>
 
-<section id="comunicacion">
-  <h2>🔗 Comunicación y Aplicación</h2>
-  <p><b>Comunicación: Bluetooth</b> → No requiere Internet, bajo consumo, conexión rápida.</p>
-  <p><b>Aplicación: App Inventor</b> → Fácil, accesible, integra módulos Bluetooth.</p>
-</section>
+  <!-- Sección Sensores -->
+  <section id="sensores">
+    <h2>🔧 Posibles Sensores a Emplear</h2>
+    <ul>
+      <li><b>Sensor de humedad del suelo:</b> mide el nivel de humedad para saber cuándo regar.</li>
+      <li><b>Sensor de temperatura y humedad (DHT11/DHT22):</b> registra condiciones climáticas.</li>
+      <li><b>Sensor de luz (LDR o BH1750):</b> detecta luminosidad para evaluar exposición solar.</li>
+    </ul>
+  </section>
 
-<section id="graficas">
-  <h2>📈 Gráficas y Alertas en Tiempo Real</h2>
+  <!-- Sección App -->
+  <section id="app">
+    <h2>📲 Descargar la App</h2>
+    <a href="huertaApp.apk" download>📥 Descargar huertaApp.apk</a><br>
+    <a href="huertaApp.aia" download>📥 Descargar huertaApp.aia</a>
+  </section>
 
-  <!-- HUMEDAD -->
-  <h3>💧 Humedad</h3>
-  <canvas id="graficaHumedad"></canvas>
-  <div id="alertaHumedad" class="alerta ok">✔ Humedad adecuada</div>
+  <!-- Sección Diagrama -->
+  <section id="diagrama">
+    <h2>📊 Diagrama de Bloques del Sistema</h2>
+    <img src="diagrama.png" alt="Diagrama del sistema" style="max-width:100%; border-radius:10px;">
+  </section>
 
-  <!-- TEMPERATURA -->
-  <h3>🌡️ Temperatura</h3>
-  <canvas id="graficaTemp"></canvas>
-  <div id="alertaTemp" class="alerta ok">✔ Temperatura adecuada</div>
+  <!-- Sección Explicación -->
+  <section id="explicacion">
+    <h2>⚙️ Explicación del Diseño Técnico</h2>
+    <ul>
+      <li>Los sensores recogen datos en tiempo real.</li>
+      <li>El <b>ESP32</b> procesa la información y decide si activar el riego automático.</li>
+      <li>Los datos se envían a la <b>app en App Inventor</b> mediante Bluetooth.</li>
+      <li>El usuario puede visualizar y controlar manualmente el sistema de riego.</li>
+    </ul>
+  </section>
 
-  <!-- LUZ -->
-  <h3>☀️ Luz</h3>
-  <canvas id="graficaLuz"></canvas>
-  <div id="alertaLuz" class="alerta ok">✔ Luz adecuada</div>
+  <!-- Sección Comunicación -->
+  <section id="comunicacion">
+    <h2>🔗 Justificación de Comunicación y Aplicación</h2>
+    <p><b>Comunicación:</b> Bluetooth → No requiere Internet, bajo consumo, conexión rápida.</p>
+    <p><b>Aplicación:</b> App Inventor → Fácil, accesible, integra módulos Bluetooth.</p>
+  </section>
 
-  <h3>📋 Registros de Datos</h3>
-  <table id="tabla">
-    <thead>
-      <tr>
-        <th>Hora</th>
-        <th>Humedad</th>
-        <th>Temperatura</th>
-        <th>Luz</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-  <button id="resetBtn">🔄 Reiniciar datos</button>
-</section>
+  <!-- Sección Gráficas -->
+  <section id="graficas">
+    <h2>📈 Gráficas y Alertas en Tiempo Real</h2>
+    <canvas id="graficaHumedad"></canvas>
+  </section>
 
-<!-- NUEVA SECCIÓN: GALERÍA Y VIDEO -->
-<section id="galeria">
-  <h2>🖼️ Galería y Video</h2>
-  <p>A continuación se muestran imágenes y un video del sistema funcionando en la huerta escolar.</p>
+  <!-- NUEVA SECCIÓN: Galería -->
+  <section id="galeria">
+    <h2>🖼️ Galería y Video</h2>
+    <p>A continuación se muestran imágenes y un video del sistema funcionando en la huerta escolar.</p>
+    <div class="galeria">
+      <img src="foto1.jpg" alt="ESP32 conectado">
+      <img src="foto2.jpg" alt="Sensores en la tierra">
+      <img src="foto3.jpg" alt="Riego automático activado">
+    </div>
+    <div class="video">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/TU_LINK_AQUI" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
 
-  <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
-    <img src="foto1.jpg" alt="ESP32 conectado" style="width:250px; border-radius:10px;">
-    <img src="foto2.jpg" alt="Sensores en la tierra" style="width:250px; border-radius:10px;">
-    <img src="foto3.jpg" alt="Riego automático activado" style="width:250px; border-radius:10px;">
-  </div>
+  <!-- NUEVA SECCIÓN: Resultados -->
+  <section id="resultados">
+    <h2>📊 Resultados y Conclusiones</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Día</th>
+          <th>Humedad Promedio</th>
+          <th>Temperatura Promedio</th>
+          <th>Observaciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Día 1</td>
+          <td>520</td>
+          <td>27°C</td>
+          <td>Humedad baja, el riego automático se activó.</td>
+        </tr>
+        <tr>
+          <td>Día 3</td>
+          <td>680</td>
+          <td>28°C</td>
+          <td>Humedad estable, crecimiento notable.</td>
+        </tr>
+        <tr>
+          <td>Día 5</td>
+          <td>700</td>
+          <td>30°C</td>
+          <td>Nivel óptimo, sistema funcionando correctamente.</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Conclusión</h3>
+    <p>El sistema mantuvo la humedad entre <b>500 y 700</b>, optimizando el uso del agua y mejorando el crecimiento de las plantas. La comunicación por Bluetooth fue estable y permitió el monitoreo en tiempo real.</p>
+  </section>
 
-  <div style="margin-top:20px; text-align:center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/TU_LINK_AQUI"
-      title="Video del Proyecto" frameborder="0" allowfullscreen></iframe>
-  </div>
-</section>
+  <footer>
+    <p>📚 Proyecto académico - GitHub Pages | 2025</p>
+  </footer>
 
-<!-- NUEVA SECCIÓN: RESULTADOS Y CONCLUSIONES -->
-<section id="resultados">
-  <h2>📊 Resultados y Conclusiones</h2>
-  <p>Se realizaron pruebas en la huerta escolar durante 5 días midiendo humedad, temperatura y luz.</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Día</th>
-        <th>Humedad Promedio</th>
-        <th>Temperatura Promedio</th>
-        <th>Observaciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Día 1</td>
-        <td>520</td>
-        <td>27°C</td>
-        <td>Humedad inicial baja, el riego automático se activó.</td>
-      </tr>
-      <tr>
-        <td>Día 3</td>
-        <td>680</td>
-        <td>28°C</td>
-        <td>Plantas con crecimiento notable, humedad estable.</td>
-      </tr>
-      <tr>
-        <td>Día 5</td>
-        <td>700</td>
-        <td>30°C</td>
-        <td>Nivel óptimo de humedad, sistema funcionando correctamente.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h3>Conclusión</h3>
-  <p>
-    El sistema de riego automático mantuvo la humedad entre <b>500 y 700</b>, lo que mejoró el crecimiento de las plantas y evitó el desperdicio de agua.
-    La comunicación por Bluetooth funcionó de forma estable y permitió el monitoreo en tiempo real desde la app.
-  </p>
-</section>
-
-<footer>
-  🌍 Proyecto académico - GitHub Pages | 2025
-</footer>
-
-<script>
-  // ---- CONFIGURACIÓN DE GRÁFICAS ----
-  const graficaHumedad = new Chart(document.getElementById('graficaHumedad'), {
-    type: 'line',
-    data: { labels: [], datasets: [{ label: 'Humedad', data: [], borderColor: 'blue', backgroundColor: 'rgba(33,150,243,0.2)', borderWidth: 2, fill: true }] },
-    options: { scales: { y: { min: 300, max: 800 } } }
-  });
-
-  const graficaTemp = new Chart(document.getElementById('graficaTemp'), {
-    type: 'line',
-    data: { labels: [], datasets: [{ label: 'Temperatura', data: [], borderColor: 'red', backgroundColor: 'rgba(244,67,54,0.2)', borderWidth: 2, fill: true }] },
-    options: { scales: { y: { min: 0, max: 50 } } }
-  });
-
-  const graficaLuz = new Chart(document.getElementById('graficaLuz'), {
-    type: 'line',
-    data: { labels: [], datasets: [{ label: 'Luz', data: [], borderColor: 'orange', backgroundColor: 'rgba(255,193,7,0.2)', borderWidth: 2, fill: true }] },
-    options: { scales: { y: { min: 0, max: 1000 } } }
-  });
-
-  function obtenerDato(min, max) { return Math.floor(Math.random() * (max - min) + min); }
-
-  function beep() {
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    const oscillator = audioCtx.createOscillator();
-    oscillator.type = "square";
-    oscillator.frequency.setValueAtTime(500, audioCtx.currentTime);
-    oscillator.connect(audioCtx.destination);
-    oscillator.start();
-    setTimeout(() => oscillator.stop(), 200);
-  }
-
-  // ---- ACTUALIZACIÓN DE DATOS ----
-  const intervalo = setInterval(() => {
-    const hora = new Date().toLocaleTimeString().slice(0, 5);
-    const humedad = obtenerDato(300, 800);
-    const temp = obtenerDato(15, 40);
-    const luz = obtenerDato(100, 900);
-
-    graficaHumedad.data.labels.push(hora);
-    graficaHumedad.data.datasets[0].data.push(humedad);
-    graficaHumedad.update();
-
-    graficaTemp.data.labels.push(hora);
-    graficaTemp.data.datasets[0].data.push(temp);
-    graficaTemp.update();
-
-    graficaLuz.data.labels.push(hora);
-    graficaLuz.data.datasets[0].data.push(luz);
-    graficaLuz.update();
-
-    const fila = document.createElement("tr");
-    fila.innerHTML = `<td>${hora}</td><td>${humedad}</td><td>${temp}</td><td>${luz}</td>`;
-    document.querySelector("#tabla tbody").appendChild(fila);
-
-    const alertaHumedad = document.getElementById("alertaHumedad");
-    const alertaTemp = document.getElementById("alertaTemp");
-    const alertaLuz = document.getElementById("alertaLuz");
-
-    if (humedad < 400) { alertaHumedad.textContent = "⚠ Humedad baja"; alertaHumedad.className = "alerta warn"; beep(); }
-    else if (humedad > 700) { alertaHumedad.textContent = "⚠ Humedad alta"; alertaHumedad.className = "alerta warn"; beep(); }
-    else { alertaHumedad.textContent = "✔ Humedad adecuada"; alertaHumedad.className = "alerta ok"; }
-
-    if (temp < 18) { alertaTemp.textContent = "⚠ Temperatura baja"; alertaTemp.className = "alerta warn"; beep(); }
-    else if (temp > 35) { alertaTemp.textContent = "⚠ Temperatura alta"; alertaTemp.className = "alerta warn"; beep(); }
-    else { alertaTemp.textContent = "✔ Temperatura adecuada"; alertaTemp.className = "alerta ok"; }
-
-    if (luz < 200) { alertaLuz.textContent = "⚠ Poca luz"; alertaLuz.className = "alerta warn"; beep(); }
-    else if (luz > 800) { alertaLuz.textContent = "⚠ Exceso de luz"; alertaLuz.className = "alerta warn"; beep(); }
-    else { alertaLuz.textContent = "✔ Luz adecuada"; alertaLuz.className = "alerta ok"; }
-
-  }, 5000);
-
-  // ---- BOTÓN REINICIAR ----
-  document.getElementById("resetBtn").addEventListener("click", () => {
-    graficaHumedad.data.labels = [];
-    graficaHumedad.data.datasets[0].data = [];
-    graficaHumedad.update();
-
-    graficaTemp.data.labels = [];
-    graficaTemp.data.datasets[0].data = [];
-    graficaTemp.update();
-
-    graficaLuz.data.labels = [];
-    graficaLuz.data.datasets[0].data = [];
-    graficaLuz.update();
-
-    document.querySelector("#tabla tbody").innerHTML = "";
-
-    document.getElementById("alertaHumedad").textContent = "✔ Humedad adecuada";
-    document.getElementById("alertaHumedad").className = "alerta ok";
-
-    document.getElementById("alertaTemp").textContent = "✔ Temperatura adecuada";
-    document.getElementById("alertaTemp").className = "alerta ok";
-
-    document.getElementById("alertaLuz").textContent = "✔ Luz adecuada";
-    document.getElementById("alertaLuz").className = "alerta ok";
-  });
-</script>
+  <!-- Script de la gráfica (Chart.js o el que ya usas) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('graficaHumedad');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['18:04', '18:05', '18:06', '18:07', '18:08'],
+        datasets: [{
+          label: 'Humedad del Suelo',
+          data: [550, 380, 620, 450, 700],
+          fill: true,
+          borderColor: 'green',
+          backgroundColor: 'rgba(0, 128, 0, 0.2)'
+        }]
+      },
+      options: { responsive: true }
+    });
+  </script>
 </body>
 </html>
+
 
 
 
